@@ -169,6 +169,27 @@
       </Layout>
     </DetailView>
     <ListView Id="Execute_Users_ListView" AllowNew="False" AllowLink="False" AllowEdit="True" />
+    <DetailView Id="Notifications_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="14.285714285714286">
+            <LayoutGroup Id="Notifications" RelativeSize="100">
+              <LayoutItem Id="NotificationString" RelativeSize="51.42857142857143" />
+              <LayoutItem Id="notiTime" Index="1" RelativeSize="48.57142857142857" />
+              <LayoutItem Id="user" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="proposalForms_Group" Direction="Vertical" RelativeSize="85.71428571428571">
+            <LayoutItem Id="proposalForms" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Notifications_ListView" AllowEdit="False">
+      <Columns>
+        <ColumnInfo Id="user" Removed="True" />
+      </Columns>
+    </ListView>
     <DetailView Id="Phieumoi" CaptionColon=":" EnableCaptionColon="True" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationFormEnabled="True" RequiredFieldMark="*" ClassName="DoAn.Module.BusinessObjects.Class.ProposalForm" DefaultFocusedItem="Content" Caption="Phiếu Đề Xuất" IsNewNode="True">
       <Items IsNewNode="True">
         <PropertyEditor Id="Content" PropertyName="Content" IsNewNode="True" />
@@ -188,14 +209,8 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="ProposalApproval_attachments_ListView">
-      <Columns>
-        <ColumnInfo Id="File" SortOrder="Ascending" />
-      </Columns>
-    </ListView>
     <DetailView Id="ProposalApproval_DetailView" AllowDelete="False" AllowEdit="True" AllowNew="False">
       <Items>
-        <PropertyEditor Id="attachments" AllowEdit="False" />
         <PropertyEditor Id="currentState" PropertyName="proposalform.Status" IsNewNode="True" />
         <PropertyEditor Id="Note" MaxLength="100" RowCount="0" />
         <PropertyEditor Id="proposalform" PropertyName="proposalform.Content" AllowEdit="False" />
@@ -224,10 +239,6 @@
             <LayoutGroup Id="attachments_Group" ShowCaption="True" Caption="attachments" Index="2" RelativeSize="20.408163265306122" IsNewNode="True">
               <LayoutItem Id="proposalform_Copy" ViewItem="proposalform_Copy" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
-          </LayoutGroup>
-          <LayoutGroup Id="attachments_Group" Caption="attachments" RelativeSize="20.408163265306122" Direction="Vertical" Removed="True">
-            <LayoutItem Id="proposalform_Copy" ViewItem="proposalform_Copy" Index="0" RelativeSize="100" IsNewNode="True" />
-            <LayoutItem Id="attachments" Removed="True" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
