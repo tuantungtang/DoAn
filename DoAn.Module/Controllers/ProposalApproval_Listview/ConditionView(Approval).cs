@@ -40,7 +40,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_Listview
                 Execute cur = ObjectSpace.GetObject<Execute>(execute); 
                 //View.CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("user.Oid = ?", ObjectSpace.GetKeyValue(user));
                 
-                View.CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("user.chucdanh = ?", cur.Oid);
+                View.CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("user.Oid = ?", cur.Oid);
 
             }
 
