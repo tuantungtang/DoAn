@@ -26,10 +26,10 @@
     <Dashboards EnableCustomization="False" />
   </Options>
   <SchemaModules>
-    <SchemaModule Name="CloneObjectModule" Version="24.2.5.0" IsNewNode="True" />
-    <SchemaModule Name="SchedulerBlazorModule" Version="24.2.5.0" IsNewNode="True" />
-    <SchemaModule Name="SchedulerModuleBase" Version="24.2.5.0" IsNewNode="True" />
-    <SchemaModule Name="SystemModule" Version="24.2.5.0" IsNewNode="True" />
+    <SchemaModule Name="CloneObjectModule" Version="24.2.3.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerBlazorModule" Version="24.2.3.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="24.2.3.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.2.3.0" IsNewNode="True" />
   </SchemaModules>
   <Validation>
     <Rules>
@@ -472,11 +472,6 @@
         <ColumnInfo Id="Signature" Caption="Signature Image" />
         <ColumnInfo Id="branch" Caption="Branch" />
         <ColumnInfo Id="depart" Caption="Department" />
-      </Columns>
-    </ListView>
-    <ListView Id="Notifications_ListView">
-      <Columns>
-        <ColumnInfo Id="user" Removed="True" />
       </Columns>
     </ListView>
     <DetailView Id="Phieumoi" Caption="Proposal Form">
