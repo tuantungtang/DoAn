@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="ProposalForm_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ProposalForm">
+              <LayoutGroup Id="ProposalForm_col2">
+                <LayoutItem Id="Ngayxong" RelativeSize="28.333333333333332" Index="0" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="TemplateForm_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="TemplateForm">
+              <LayoutGroup Id="TemplateForm_col1" RelativeSize="100">
+                <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100">
+                  <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Văn Bản">
+                    <LayoutItem Id="FormName" ViewItem="FormName" Index="0" RelativeSize="21.11801242236025" />
+                    <LayoutItem Id="Thuchien" ViewItem="Thuchien" Index="1" RelativeSize="16.149068322981368" />
+                    <LayoutItem Id="Huy" ViewItem="Huy" Index="2" RelativeSize="16.149068322981368" />
+                    <LayoutItem Id="category" ViewItem="category" Index="3" RelativeSize="16.149068322981368" />
+                    <LayoutItem Id="employee" ViewItem="employee" Index="4" RelativeSize="9.316770186335404" />
+                    <LayoutItem Id="execute" ViewItem="execute" Index="5" RelativeSize="21.11801242236025" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" Caption="Nội Dung">
+                    <LayoutItem Id="Content" ViewItem="Content" Index="0" RelativeSize="100" />
+                  </LayoutGroup>
+                </TabbedGroup>
+                <LayoutItem Id="Huy" RelativeSize="23.28767123287671" Index="1" Removed="True" />
+                <LayoutItem Id="FormName" RelativeSize="36.170212765957444" Removed="True" />
+                <LayoutItem Id="Thuchien" RelativeSize="20" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="TemplateForm_col2" RelativeSize="50.073855243722306" Caption="TemplateForm_col2" Removed="True">
+                <LayoutItem Id="employee" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="category" RelativeSize="23.28767123287671" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

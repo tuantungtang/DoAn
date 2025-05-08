@@ -1,0 +1,230 @@
+﻿@using DevExpress.Blazor.RichEdit
+@using DevExpress.Blazor.Office;
+@using DoAn.Module.BusinessObjects.Class
+@using DoAn.Module.BusinessObjects.Authentication
+@using DoAn.Module
+@using DevExpress.Persistent.BaseImpl;
+@using DevExpress.ExpressApp;
+@using DevExpress.ExpressApp.Xpo;
+@using DevExpress.Xpo;
+@using DevExpress.Data.Filtering;
+@using DevExpress.Xpo.DB;
+
+
+
+@inject DevExpress.ExpressApp.IObjectSpaceFactory objectSpaceFactory
+@inject IJSRuntime jsRuntime
+
+<style>
+    .my-textstyle {
+        border: none;
+        font-size:larger;
+        font-weight:900;
+    }
+</style>
+<style>
+    .my-style {
+        color: blue;
+        font-weight: bold;
+    }
+
+    .tieude {
+        font-weight: bold;
+    }
+
+    .nhieudong {
+        white-space:pre-wrap;
+    }
+</style>
+<div class="row">
+    <div class="col">
+        <DxTextBox @bind-Text="@tendx" CssClass="my-textstyle"></DxTextBox>
+    </div>
+    <div class="col col-lg-2">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style=@($"width: {tyle}%;")
+                 aria-valuenow=@tyle aria-valuemin="0"
+                 aria-valuemax="100">
+                @tyle%
+            </div>
+        </div>
+    </div>
+</div>
+<DxTextBox @bind-Text="@thongtin" ReadOnly=true></DxTextBox>
+
+<div class="row">
+    <DxRichEdit DocumentFormat="DocumentFormat.Rtf"
+                DocumentContent="@documentContent"
+                CustomizeRibbon=OnCustomizeRibbon
+                CssClass="w-100 ch-720"
+                ReadOnly=true />
+</div>
+
+<div class="row">
+    <div class="card-header bg-transparent text-body py-2 border-bottom-0 fw-bold">Qui Trình Duyệt:</div>
+    <DxGrid Data="@ListDuyet"
+            PageSize="20"
+            ColumnResizeMode="GridColumnResizeMode.NextColumn"
+            SelectionMode="GridSelectionMode.Single">
+        <Columns>
+            <DxGridDataColumn Caption="Id" FieldName="Id" Visible="false" />
+            <DxGridDataColumn Caption="TT" FieldName="SoTT" Width="5%" TextAlignment="GridTextAlignment.Right">
+                <HeaderCaptionTemplate>
+                    <span class="tieude">TT</span>
+                </HeaderCaptionTemplate>
+            </DxGridDataColumn>
+            <DxGridDataColumn Caption="Người duyệt" FieldName="Nguoiduyet" Width="20%">
+                <HeaderCaptionTemplate>
+                    <span class="tieude">Người duyệt</span>
+                </HeaderCaptionTemplate>
+            </DxGridDataColumn>
+            <DxGridDataColumn Caption="Hạn duyệt" FieldName="Han" TextAlignment="GridTextAlignment.Right">
+                <HeaderCaptionTemplate>
+                    <span class="tieude">Hạn duyệt</span>
+                </HeaderCaptionTemplate>
+            </DxGridDataColumn>
+            <DxGridDataColumn Caption="Ngày duyệt" FieldName="Ngay" TextAlignment="GridTextAlignment.Right">
+                <HeaderCaptionTemplate>
+                    <span class="tieude">Ngày duyệt</span>
+                </HeaderCaptionTemplate>
+            </DxGridDataColumn>
+            <DxGridDataColumn Caption="Kết luận" FieldName="Ketluan" Width="20%">
+                <HeaderCaptionTemplate>
+                    <span class="tieude">Kết luận</span>
+                </HeaderCaptionTemplate>
+            </DxGridDataColumn>
+            <DxGridDataColumn Caption="Ý kiến" FieldName="Ghichu" Width="30%">
+                <HeaderCaptionTemplate>
+                    <span class="tieude">Ý kiến</span>
+                </HeaderCaptionTemplate>
+            </DxGridDataColumn>
+        </Columns>
+        <DataColumnCellDisplayTemplate>
+            @{
+                if (context.DataColumn.FieldName.Contains("Ghichu"))
+                {
+                    <span class="nhieudong">@context.DisplayText</span>
+                }
+                else
+                {
+                    <span>@context.DisplayText</span>
+                }
+            }
+        </DataColumnCellDisplayTemplate>
+
+    </DxGrid>
+</div>
+
+@code {
+    string tendx { get; set; }
+    string thongtin { get; set; }
+    byte[] documentContent;
+    int tyle { get; set; }
+    private QTDuyet[] ListDuyet;
+    bool Daduyet { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        LoadDulieu();
+    }
+
+    private void LoadDulieu()
+    {
+        Daduyet = false;
+        // Guid phieuid;
+
+        try
+        {
+            ApplicationUser ns = Define.GetCurrentNhanvien();
+
+            if (ns!=null)
+            {
+                IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(ProposalForm));
+                // Session session = ((XPObjectSpace)objectSpace).Session;
+                ProposalForm phieudexuat = objectSpace.FindObject<ProposalForm>(CriteriaOperator.Parse("user=?", ns.Oid));
+                objectSpace.CommitChanges();
+                if (phieudexuat != null)
+                {
+                    if (phieudexuat.State == Define.EStatusVB.daduyet)
+                        Daduyet = true;
+
+                    // int landuyet = 0;
+                    // foreach (ProposalApproval d in phieudexuat.ProposalApprovals)
+                    // {
+                    //     if (d.State == Define.EStatusDuyet.daduyet)
+                    //         landuyet++;
+                    // }
+
+                    //string buocduyet = " - Đã duyệt: " + landuyet + "/" + phieudexuat.ProposalApprovals.Count;
+                    //string xuly = " @ Xử lý sau duyệt: ";
+                    // if (phieudexuat.NguoiXuly != null) = Define.GetUserIntValue("viewdx")
+                    // {
+                    //     xuly += phieudexuat.NguoiXuly.Name + " - Hoàn thành: ";
+                    //     if (phieudexuat.Ngayxong != DateTime.MinValue)
+                    //         xuly += phieudexuat.Ngayxong.ToShortDateString();
+                    // }+ xuly
+                    tendx = phieudexuat.Name;
+                    thongtin = "Ngày: " + phieudexuat.Date.ToString("dd/MM/yyyy HH:mm") + ", Người lập: " + phieudexuat.user.Name;
+                    documentContent = System.Text.Encoding.ASCII.GetBytes(phieudexuat.Content);
+                    tyle = phieudexuat.Status;
+                }
+                //qua trinh duyet
+                // List<QTDuyet> qts = new();
+                // string sql2 = @"SELECT TOP (100) PERCENT dbo.ProposalApproval.OID, dbo.ProposalApproval.Step, dbo.ApplicationUser.Name, dbo.ProposalApproval.DueDate, dbo.ProposalApproval.ApprovalDate,
+                // dbo.ProposalApproval.State, dbo.ProposalApproval.Note
+                // FROM     dbo.ProposalApproval INNER JOIN
+                // dbo.ApplicationUser ON dbo.ProposalApproval.user = dbo.ApplicationUser.OID
+                // WHERE  (dbo.ProposalApproval.proposalform = " + phieuid + ") ORDER BY dbo.ProposalApproval.Step";
+                // SelectedData results2 = session.ExecuteQuery(sql2);
+                // foreach (SelectStatementResultRow row in results2.ResultSet[0].Rows)
+                // {
+                //     QTDuyet obj = new()
+                //         {
+                //             Id = CommonLib.CString(row.Values[0]),
+                //             SoTT = CommonLib.CInt(row.Values[1]),
+                //             Nguoiduyet = CommonLib.CString(row.Values[2]),
+                //             Ghichu = CommonLib.CString(row.Values[6]),
+                //         };
+
+                //     int trangthai = CommonLib.CInt(row.Values[5]);
+                //     if (trangthai == 1)
+                //         obj.Ketluan = "Không đồng ý";
+                //     else if (trangthai == 2)
+                //         obj.Ketluan = "Đồng ý";
+                //     else
+                //         obj.Ketluan = "Chờ xử lý";
+                //     if (row.Values[3] != null)
+                //     {
+                //         DateTime.TryParse(CommonLib.CString(row.Values[3]), out DateTime ngay1);
+                //         obj.Han = ngay1.ToString("dd/MM/yyyy");
+                //     }
+                //     if (row.Values[4] != null)
+                //     {
+                //         DateTime.TryParse(CommonLib.CString(row.Values[4]), out DateTime ngay2);
+                //         obj.Ngay = ngay2.ToString("dd/MM/yyyy HH:mm");
+                //     }
+                //     qts.Add(obj);
+                // }
+                // ListDuyet = qts.ToArray<QTDuyet>();
+            }
+        }
+        catch (Exception ex)
+        {
+            Define.CustomError(ex.Message);
+        }
+    }
+    void OnCustomizeRibbon(IRibbon model)
+    {
+        RibbonTabCollection tabs = model.Tabs;
+        tabs.Remove(RichEditRibbonTabNames.File);
+        tabs.Remove(RichEditRibbonTabNames.Home);
+        tabs.Remove(RichEditRibbonTabNames.Insert);
+        tabs.Remove(RichEditRibbonTabNames.PageLayout);
+
+        tabs.Remove(RichEditRibbonTabNames.MailMerge);
+        tabs.Remove(RichEditRibbonTabNames.References);
+        tabs.Remove(RichEditRibbonTabNames.TableDesign);
+        tabs.Remove(RichEditRibbonTabNames.TableLayout);
+    }
+}

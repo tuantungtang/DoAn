@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Authorize_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="proposalApproval" AllowEdit="False" />
+        <PropertyEditor Id="proposalForm" AllowEdit="False" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Authorize" RelativeSize="100" Caption="Authorize">
+              <LayoutItem Id="user" RelativeSize="100" />
+              <LayoutItem Id="proposalForm" Index="1" RelativeSize="92.3076923076923" Removed="True" />
+              <LayoutItem Id="proposalApproval" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

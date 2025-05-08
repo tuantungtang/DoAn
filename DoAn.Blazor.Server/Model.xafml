@@ -1,0 +1,704 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel>
+    <Class Name="DoAn.Module.BusinessObjects.Authentication.ApplicationUser">
+      <OwnMembers>
+        <Member Name="Name" Size="500" LookupEditorMode="Auto" DisplayFormat="" AllowEdit="True" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems NavigationStyle="Accordion">
+    <Items>
+      <Item Id="Category">
+        <Items>
+          <Item Id="Execute_ListView" Index="0" />
+          <Item Id="Category_ListView" Index="1" />
+          <Item Id="TemplateForm_ListView" Index="2" />
+          <Item Id="Department_ListView" Index="3" />
+          <Item Id="DepartmentForm_ListView" Index="4" />
+          <Item Id="ProposalForm_ListView" Index="5" />
+          <Item Id="ProposalApproval_ListView" Index="6" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Options UIType="SingleWindowSDI" RestoreTabbedMdiLayout="False" ShowTabImage="True">
+    <Dashboards EnableCustomization="False" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="24.2.3.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerBlazorModule" Version="24.2.3.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="24.2.3.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.2.3.0" IsNewNode="True" />
+  </SchemaModules>
+  <Validation>
+    <Rules>
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_Email" TargetContextIDs="Save" TargetPropertyName="Email" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" Pattern="^(?=.{5,255}$)([a-zA-Z0-9]+([._+-]?[a-zA-Z0-9]+)*)@([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,})$" CustomMessageTemplate="'Email&quot; is incorrect format" IsNewNode="True" />
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_EmployeeId" TargetPropertyName="EmployeeId" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetContextIDs="Save" Pattern="^[a-zA-Z0-9]{3,12}$" CustomMessageTemplate="'Employee Id' must not contain special characters or accented letters, minimum 3 and maximum 12 characters" IsNewNode="True" />
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_EmployeeId1" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="EmployeeId" TargetContextIDs="Save" Pattern="^(?!\s*$).+" CustomMessageTemplate="'Employee Id' cannot be empty!" IsNewNode="True" />
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_HoVaTen1" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="Name" TargetContextIDs="Save" Pattern="^(?!\s*$).+" CustomMessageTemplate="'Name' cannot be empty!" IsNewNode="True" />
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_Name" TargetPropertyName="Name" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetContextIDs="Save" Pattern="^[\p{L} ]{1,50}$" CustomMessageTemplate="'Name' cannot contain special characters and must be a maximum of 50 characters" IsNewNode="True" />
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_PhoneNumber" Pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="PhoneNumber" TargetContextIDs="Save" CustomMessageTemplate="'Phone Number' is incorrect format of Viet Nam" IsNewNode="True" />
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Class.Category" TargetPropertyName="CategoryName" TargetType="DoAn.Module.BusinessObjects.Class.Category" Pattern="^(?!\s*$).+" TargetContextIDs="Save" CustomMessageTemplate="'Category Name' cannot be empty!" IsNewNode="True" />
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Class.Execute_MaChucDanh" TargetType="DoAn.Module.BusinessObjects.Class.Execute" TargetContextIDs="Save" Pattern="^(?!\s*$).+" TargetPropertyName="RoleNumber" CustomMessageTemplate="'Execute Code' cannot be empty!" IsNewNode="True" />
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Class.Execute_MaChuKy" TargetContextIDs="Save" Pattern="^(?!\s*$).+" TargetType="DoAn.Module.BusinessObjects.Class.Execute" TargetPropertyName="CodeCK" CustomMessageTemplate="'Signature Code' cannot be empty!" IsNewNode="True" />
+      <RuleRegularExpression Id="DevExpress.Persistent.Validation.RuleRegularExpression_DoAn.Module.BusinessObjects.Class.Execute_TenChucDanh" TargetType="DoAn.Module.BusinessObjects.Class.Execute" TargetPropertyName="RoleName" Pattern="^(?!\s*$).+" TargetContextIDs="Save" CustomMessageTemplate="'Execute Name' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_Email" InvertResult="False" ResultType="Error" CustomMessageTemplate="'Email' cannot be empty!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_EmployeeId" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" CustomMessageTemplate="'Employee Id' cannot be empty!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_Files" CustomMessageTemplate="'Files' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_Gender" CustomMessageTemplate="'Gender' cannot be empty!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_Name" CustomMessageTemplate="'Name' cannot be empty!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_PhoneNumber" CustomMessageTemplate="'Phone Number' cannot be empty!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_ProposalApprovals" CustomMessageTemplate="'Proposal Approvals' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_ProposalForms" CustomMessageTemplate="'Proposal Forms' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Authentication.ApplicationUser_Proposals" CustomMessageTemplate="'Proposals' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Branch_Departments" CustomMessageTemplate="'Departments' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Branch_ProposalForms" CustomMessageTemplate="'Proposal Forms' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Branch_Users" CustomMessageTemplate="'Users' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Category_TemplateForms" TargetPropertyName="TemplateForms" CustomMessageTemplate="'Template Forms' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Department" TargetType="DoAn.Module.BusinessObjects.Class.Department" TargetPropertyName="DepartmentName" TargetContextIDs="Save" CustomMessageTemplate="'Department Name' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Department_DepartmentForms" CustomMessageTemplate="'Department Forms' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Department_ProposalForms" CustomMessageTemplate="'Proposal Forms' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.DepartmentForms_DepartmentName" CustomMessageTemplate="'Department' cannot be empty!" TargetType="DoAn.Module.BusinessObjects.Class.DepartmentForm" TargetPropertyName="department.DepartmentName" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.DepartmentForms_TemplateName" TargetType="DoAn.Module.BusinessObjects.Class.DepartmentForm" TargetPropertyName="templateform.FormName" TargetContextIDs="Save" CustomMessageTemplate="'Template Form' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Execute_ApprovalProcesses" CustomMessageTemplate="'Approval Processes' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Execute_MaChucDanh" TargetType="DoAn.Module.BusinessObjects.Class.Execute" TargetPropertyName="RoleNumber" TargetContextIDs="Save" CustomMessageTemplate="'Execute Code' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Execute_MaChuKy" TargetType="DoAn.Module.BusinessObjects.Class.Execute" TargetPropertyName="CodeCK" TargetContextIDs="Save" CustomMessageTemplate="'Signature Code' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Execute_TenChucDanh" TargetType="DoAn.Module.BusinessObjects.Class.Execute" TargetPropertyName="RoleName" TargetContextIDs="Save" CustomMessageTemplate="'Execute Name' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_DoAn.Module.BusinessObjects.Class.Execute_Users" CustomMessageTemplate="'Users' data is present. Cannot be deleted!" />
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredFieldSave_DoAn.Module.BusinessObjects.Class.Category" TargetPropertyName="CategoryName" TargetType="DoAn.Module.BusinessObjects.Class.Category" TargetContextIDs="Save" CustomMessageTemplate="'Category Name' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="PermissionPolicyUser_UserName_RuleRequiredField" CustomMessageTemplate="'User Name' không được để trống!" />
+      <RuleUniqueValue Id="PermissionPolicyUser_UserName_RuleUniqueValue" CustomMessageTemplate="'User Name' đã tồn tại trong hệ thống" />
+      <RuleUserNameFormatIsCorrect Id="PermissionPolicyUser_UserName_RuleUserNameFormatIsCorrect" CustomMessageTemplate="'User Name' không đúng định dạng" />
+      <RuleCriteria Id="PermissionPolicyUser_XPO_Prevent_delete_logged_in_user" CustomMessageTemplate="Không thể xóa người dùng hiện đang đăng nhập. Vui lòng đăng nhập bằng tài khoản người dùng khác và thử lại." />
+      <RuleRegularExpression Id="RegularExpress.User.Name.ChuHoa" Pattern="^(\p{Lu}[\p{Ll}]*)( +\p{Lu}[\p{Ll}]*)*$" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="Name" TargetContextIDs="Save" CustomMessageTemplate="'Name' The first letter of each word must be capitalized." IsNewNode="True" />
+      <RuleRegularExpression Id="RegularExpress.User.Name.khongChua2KhoangTrang" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="Name" TargetContextIDs="Save" Pattern="^(?!.* {2})" CustomMessageTemplate="'Name' cannot contain 2 consecutive spaces" IsNewNode="True" />
+      <RuleRegularExpression Id="RuleRegularExpress.Attachment.TenTaiLieu" TargetType="DoAn.Module.BusinessObjects.Class.Attachment" TargetContextIDs="Save" Pattern="^(?!\s*$).+" TargetPropertyName="Tailieu" CustomMessageTemplate="'File Name' cannot be empty!" IsNewNode="True" />
+      <RuleRegularExpression Id="RuleRegularExpress.Comment.BinhLuan" TargetType="DoAn.Module.BusinessObjects.Class.Comments" TargetContextIDs="Save" TargetPropertyName="Comment" Pattern="^(?!\s*$).+" CustomMessageTemplate="'Comment' cannot be empty!" IsNewNode="True" />
+      <RuleRegularExpression Id="RuleRegularExpress.Department.BoPhan" CustomMessageTemplate="'Department Name' cannot be empty!" TargetType="DoAn.Module.BusinessObjects.Class.Department" TargetPropertyName="DepartmentName" Pattern="^(?!\s*$).+" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRegularExpression Id="RuleRegularExpress.TemplateForm.TenMauDon" CustomMessageTemplate="'Form Name' cannot be empty!" Pattern="^(?!\s*$).+" TargetContextIDs="Save" TargetType="DoAn.Module.BusinessObjects.Class.TemplateForm" TargetPropertyName="FormName" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.ApprosalProcess.NguoiDuyet" TargetType="DoAn.Module.BusinessObjects.Class.ApprovalProcess" TargetPropertyName="execute" TargetContextIDs="Save" CustomMessageTemplate="'Execute' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.Attachment.NhanSu" TargetType="DoAn.Module.BusinessObjects.Class.Attachment" TargetPropertyName="user" TargetContextIDs="Save" CustomMessageTemplate="'User' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.Attachment.TaiLieu" TargetType="DoAn.Module.BusinessObjects.Class.Attachment" TargetPropertyName="File" TargetContextIDs="Save" CustomMessageTemplate="'File' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.Attachment.TenTaiLieu" CustomMessageTemplate="'File Name' cannot be empty!" TargetType="DoAn.Module.BusinessObjects.Class.Attachment" TargetPropertyName="Tailieu" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.Comment.BinhLuan" CustomMessageTemplate="'Comment' cannot be empty!" TargetType="DoAn.Module.BusinessObjects.Class.Comments" TargetPropertyName="Comment" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.Comment.NhanSu" CustomMessageTemplate="'User' cannot be empty!" TargetType="DoAn.Module.BusinessObjects.Class.Comments" TargetPropertyName="user" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.Department.CoSo" TargetType="DoAn.Module.BusinessObjects.Class.Department" TargetPropertyName="branch" TargetContextIDs="Save" CustomMessageTemplate="'Branch' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.Sharing.NhanSu" TargetType="DoAn.Module.BusinessObjects.Class.Sharing" TargetPropertyName="user" TargetContextIDs="Save" CustomMessageTemplate="'User' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.Sharing.PhieuDeXuat" TargetType="DoAn.Module.BusinessObjects.Class.Sharing" TargetPropertyName="proposalform" TargetContextIDs="Save" CustomMessageTemplate="'Proposal Form' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.TemplateForm.LoaiMau" TargetType="DoAn.Module.BusinessObjects.Class.TemplateForm" TargetPropertyName="category" TargetContextIDs="Save" CustomMessageTemplate="'Category' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.TemplateForm.TenMauDon" TargetType="DoAn.Module.BusinessObjects.Class.TemplateForm" TargetPropertyName="FormName" TargetContextIDs="Save" CustomMessageTemplate="'Form Name' cannot be empty!" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.User.BoPhan" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="depart" TargetContextIDs="Save" CustomMessageTemplate="'Depart' must not be missing!" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.User.ChucDanh" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="chucdanh" CustomMessageTemplate="'Execute' must not be missing!" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.User.CoSo" CustomMessageTemplate="'Branch' must not be missing!" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="branch" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="RuleRequired.User.Role" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="Roles" CustomMessageTemplate="'Role' must not be missing!" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleUniqueValue Id="RuleUnique.User.Email" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="Email" TargetContextIDs="Save" CustomMessageTemplate="'Email' is already exists!" IsNewNode="True" />
+      <RuleUniqueValue Id="RuleUnqiue.User.SoThe" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="EmployeeId" TargetContextIDs="Save" CustomMessageTemplate="'Employee Id' is already exists!" IsNewNode="True" />
+      <RuleValueComparison Id="RuleValueCompare.ApprovalProcess.SoNgayDuyet" CustomMessageTemplate="'Number of Approval Days' must be greater than 0" TargetType="DoAn.Module.BusinessObjects.Class.ApprovalProcess" TargetPropertyName="DayLeft" TargetContextIDs="Save" OperatorType="GreaterThan" RightOperand="0" IsNewNode="True" />
+      <RuleValueComparison Id="RuleValueCompare.ApprovalProcess.Step" TargetType="DoAn.Module.BusinessObjects.Class.ApprovalProcess" TargetPropertyName="Step" TargetContextIDs="Save" OperatorType="GreaterThan" RightOperand="0" CustomMessageTemplate="'Step' must be greater than 0" IsNewNode="True" />
+      <RuleRequiredField Id="Yeucau mauphieu" CustomMessageTemplate="'Template Form' cannot be empty!" />
+      <RuleRequiredField Id="Yeucau Nhanvien" CustomMessageTemplate="'User' not logged in yet" />
+      <RuleRegularExpression Id="YeuCauTenDeXuat" TargetType="DoAn.Module.BusinessObjects.Class.ProposalForm" TargetContextIDs="Save" TargetPropertyName="Name" Pattern="^(?!\s*$).+" CustomMessageTemplate="'Proposal Name' cannot be empty!" IsNewNode="True" />
+    </Rules>
+  </Validation>
+  <Views>
+    <ListView Id="ApplicationUser_Comments_ListView" Caption="Comment" AllowDelete="False" AllowLink="False" AllowNew="False">
+      <Columns>
+        <ColumnInfo Id="user" Caption="User" />
+        <ColumnInfo Id="Comment" Caption="Comment" MaxLength="300" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ApplicationUser_DetailView">
+      <Items>
+        <PropertyEditor Id="branch" Caption="Branch" />
+        <PropertyEditor Id="chucdanh" Caption="Execute" />
+        <PropertyEditor Id="depart" Caption="Department" />
+        <PropertyEditor Id="EmployeeId" Caption="Employee ID" />
+        <PropertyEditor Id="Gender" PropertyEditorType="DevExpress.ExpressApp.Blazor.Editors.StringPropertyEditor" LookupEditorMode="Auto" Caption="Gender" />
+        <PropertyEditor Id="IsActive" Removed="True" />
+        <PropertyEditor Id="Name" MaxLength="50" Caption="Name" />
+        <PropertyEditor Id="PhoneNumber" Caption="Phone Number" />
+        <PropertyEditor Id="ProposalApprovals" AllowEdit="False" />
+        <PropertyEditor Id="ProposalForms" Caption="Proposal Forms" />
+        <PropertyEditor Id="Proposals" Caption="Proposals" />
+        <PropertyEditor Id="Signature" Caption="Signature Image" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="69.90521327014218">
+            <LayoutGroup Id="ApplicationUser" Direction="Horizontal" RelativeSize="99.66101694915254">
+              <LayoutGroup Id="ApplicationUser_col1" ShowCaption="False" Index="0" RelativeSize="48.549107142857146" IsNewNode="True" Removed="True">
+                <LayoutItem Id="EmployeeId" ViewItem="EmployeeId" Index="0" RelativeSize="13.28125" IsNewNode="True" />
+                <LayoutItem Id="Name" ViewItem="Name" Index="1" RelativeSize="10.15625" IsNewNode="True" />
+                <LayoutItem Id="PhoneNumber" ViewItem="PhoneNumber" Index="2" RelativeSize="10.15625" IsNewNode="True" />
+                <LayoutItem Id="Gender" ViewItem="Gender" Index="3" RelativeSize="10.15625" IsNewNode="True" />
+                <LayoutItem Id="Email" ViewItem="Email" Index="4" RelativeSize="10.15625" IsNewNode="True" />
+                <LayoutGroup Id="Auto62522c54-7aee-4348-bcea-fed325340e6b" ShowCaption="False" Caption="Auto62522c54-7aee-4348-bcea-fed325340e6b(10)" Direction="Vertical" Index="5" RelativeSize="46.09375" IsNewNode="True">
+                  <LayoutGroup Id="Auto0dd950ac-f082-4b41-a9e8-0103566bd63c" ShowCaption="False" Caption="Auto0dd950ac-f082-4b41-a9e8-0103566bd63c(12)" Index="0" RelativeSize="100" IsNewNode="True">
+                    <LayoutItem Id="UserName" ViewItem="UserName" Index="0" RelativeSize="27.11864406779661" IsNewNode="True" />
+                    <LayoutItem Id="branch" ViewItem="branch" Index="1" RelativeSize="22.033898305084747" IsNewNode="True" />
+                    <LayoutItem Id="depart" ViewItem="depart" Index="2" RelativeSize="22.033898305084747" IsNewNode="True" />
+                    <LayoutItem Id="chucdanh" ViewItem="chucdanh" Index="3" RelativeSize="28.8135593220339" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="ApplicationUser_col2" Index="1" RelativeSize="51.450892857142854" Caption="ApplicationUser_col2">
+                <LayoutItem Id="branch" ViewItem="branch" Index="0" RelativeSize="19.10112359550562" Removed="True" />
+                <LayoutItem Id="chucdanh" ViewItem="chucdanh" Index="0" RelativeSize="13.28125" Removed="True" />
+                <LayoutItem Id="depart" ViewItem="depart" Index="0" RelativeSize="14.782608695652174" Removed="True" />
+                <LayoutItem Id="Photo" CustomCSSClassName="photo-preview" ViewItem="Photo" Index="0" RelativeSize="13.28125" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="Signature" CustomCSSClassName="photo-preview" ViewItem="Signature" Index="1" RelativeSize="86.71875" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="UserName" ViewItem="UserName" Index="2" RelativeSize="12.745098039215685" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="PermissionPolicyUser" RelativeSize="0.3389830508474576" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="30.09478672985782">
+            <LayoutGroup Id="Proposals" Removed="True" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="ApplicationUser_Files_ListView" Caption="Attachment" IsFooterVisible="False" AllowDelete="False" AllowLink="False" AllowNew="False">
+      <Columns>
+        <ColumnInfo Id="user" Caption="User" />
+        <ColumnInfo Id="File" Caption="File" />
+        <ColumnInfo Id="Tailieu" Caption="File Name" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+      </Columns>
+    </ListView>
+    <ListView Id="ApplicationUser_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" SortIndex="-1" SortOrder="None" Caption="Name" Width="121" />
+        <ColumnInfo Id="EmployeeId" SortIndex="0" SortOrder="Descending" Caption="Employee ID" />
+        <ColumnInfo Id="PhoneNumber" Caption="Phone Number" />
+        <ColumnInfo Id="Gender" Caption="Gender" />
+        <ColumnInfo Id="Photo" ImageSizeMode="AutoSize" ImageEditorCustomHeight="100" ImageEditorFixedHeight="0" ImageEditorFixedWidth="0" Width="100" />
+        <ColumnInfo Id="Signature" Caption="Signature Image" ImageEditorCustomHeight="100" Width="100" MinWidth="50" ImageSizeMode="AutoSize" />
+        <ColumnInfo Id="branch" Caption="Branch" />
+        <ColumnInfo Id="depart" Caption="Department" />
+        <ColumnInfo Id="chucdanh" Caption="Execute" />
+      </Columns>
+    </ListView>
+    <ListView Id="ApplicationUser_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Name" />
+      </Columns>
+    </ListView>
+    <ListView Id="ApplicationUser_ProposalApprovals_ListView">
+      <Columns>
+        <ColumnInfo Id="user" Caption="Approver" />
+        <ColumnInfo Id="Step" Caption="Step" />
+        <ColumnInfo Id="DueDate" Caption="Due Date" />
+        <ColumnInfo Id="ApprovalDate" Caption="Approval Date" />
+        <ColumnInfo Id="Note" Caption="Note" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+        <ColumnInfo Id="State" Caption="State" />
+      </Columns>
+    </ListView>
+    <ListView Id="ApplicationUser_ProposalForms_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="Content" Caption="Content" />
+        <ColumnInfo Id="user" Caption="Creator" />
+        <ColumnInfo Id="Name" Caption="Proposal Name" Width="150" />
+        <ColumnInfo Id="Date" Caption="Proposal Date" Width="150" />
+        <ColumnInfo Id="CS" Caption="Branch" Width="120" />
+        <ColumnInfo Id="Donvi" Caption="Deparment" Width="150" MinWidth="100" />
+        <ColumnInfo Id="Dagui" Caption="Send" Width="80" />
+        <ColumnInfo Id="Ngayduyet" Caption="Approval Date" Width="150" />
+        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Width="182" />
+        <ColumnInfo Id="Daxong" Caption="Done" Width="100" />
+        <ColumnInfo Id="templateform" Caption="Template Form" Width="150" />
+        <ColumnInfo Id="State" Caption="State" Width="100" />
+        <ColumnInfo Id="Status" Caption="Process" Width="100" />
+      </Columns>
+    </ListView>
+    <ListView Id="ApplicationUser_Proposals_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" Removed="True">
+      <Columns>
+        <ColumnInfo Id="Content" Caption="Content" />
+        <ColumnInfo Id="CS" Caption="Branch" />
+        <ColumnInfo Id="Dagui" Caption="Send" />
+        <ColumnInfo Id="Date" Caption="Proposal Date" />
+        <ColumnInfo Id="Daxong" Caption="Done" />
+        <ColumnInfo Id="Donvi" Caption="Department" />
+        <ColumnInfo Id="Name" Width="106" Caption="Proposal Name" />
+        <ColumnInfo Id="Ngayduyet" Caption="Approval Date" />
+        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" />
+        <ColumnInfo Id="State" Caption="State" />
+        <ColumnInfo Id="Status" Caption="Process" />
+        <ColumnInfo Id="templateform" Caption="Template Form" />
+        <ColumnInfo Id="user" Caption="Creator" />
+      </Columns>
+    </ListView>
+    <ListView Id="ApplicationUser_Sharings_ListView" Caption="Sharing" AllowLink="False" AllowNew="False" AllowUnlink="False" AllowDelete="False">
+      <Columns>
+        <ColumnInfo Id="user" Caption="User" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ApprovalProcess_DetailView" AllowDelete="True">
+      <Items>
+        <PropertyEditor Id="DayLeft" Caption="Number of Approval Days" />
+        <PropertyEditor Id="execute" Caption="Approver" />
+        <PropertyEditor Id="Step" Caption="Step" />
+        <PropertyEditor Id="templateform" Caption="Template Form" AllowEdit="False" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ApprovalProcess" RelativeSize="100">
+              <LayoutItem Id="Step" RelativeSize="8.21256038647343" />
+              <LayoutItem Id="DayLeft" RelativeSize="6.280193236714976" />
+              <LayoutItem Id="execute" RelativeSize="85.5072463768116" />
+              <LayoutItem Id="templateform" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="ApprovalProcess_ListView">
+      <Columns>
+        <ColumnInfo Id="Step" Caption="Step" />
+        <ColumnInfo Id="DayLeft" Caption="Number of Approval Days" />
+        <ColumnInfo Id="execute" Caption="Approver" />
+        <ColumnInfo Id="templateform" Caption="Template Form" />
+      </Columns>
+    </ListView>
+    <ListView Id="ApprovalProcess_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Step" Caption="Step" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Attachment_DetailView" Caption="Attachment">
+      <Items>
+        <PropertyEditor Id="File" Caption="File" />
+        <PropertyEditor Id="proposalform" Caption="Proposal Form" />
+        <PropertyEditor Id="Tailieu" MaxLength="100" Caption="File Name" />
+        <PropertyEditor Id="user" Caption="User" />
+      </Items>
+    </DetailView>
+    <ListView Id="Attachment_ListView" Caption="Attachment">
+      <Columns>
+        <ColumnInfo Id="File" Caption="File" />
+        <ColumnInfo Id="Tailieu" Caption="File Name" />
+        <ColumnInfo Id="user" Caption="User" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+      </Columns>
+    </ListView>
+    <ListView Id="Attachment_LookupListView" Caption="Attachment" />
+    <DetailView Id="Branch_DetailView">
+      <Items>
+        <PropertyEditor Id="BranchName" Caption="Branch Name" />
+      </Items>
+    </DetailView>
+    <ListView Id="Branch_ListView">
+      <Columns>
+        <ColumnInfo Id="BranchName" Caption="Branch Name" />
+      </Columns>
+    </ListView>
+    <ListView Id="Branch_LookupListView">
+      <Columns>
+        <ColumnInfo Id="BranchName" Caption="Branch Name" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Category_DetailView">
+      <Items>
+        <PropertyEditor Id="CategoryName" Caption="Category Name" />
+      </Items>
+    </DetailView>
+    <ListView Id="Category_ListView">
+      <Columns>
+        <ColumnInfo Id="CategoryName" SortOrder="Descending" Caption="Category Name" />
+      </Columns>
+    </ListView>
+    <ListView Id="Category_LookupListView">
+      <Columns>
+        <ColumnInfo Id="CategoryName" Caption="Category Name" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ClsImport_DetailView" AllowDelete="False" AllowEdit="True" AllowNew="True" DefaultFocusedItem="XlsFile">
+      <Items>
+        <PropertyEditor Id="NoiDung" RowCount="10" />
+      </Items>
+    </DetailView>
+    <DetailView Id="Comments_DetailView" Caption="Comment">
+      <Items>
+        <PropertyEditor Id="Comment" MaxLength="300" Caption="Comment" />
+        <PropertyEditor Id="proposalform" Caption="Proposal Form" />
+        <PropertyEditor Id="user" Caption="User" />
+      </Items>
+    </DetailView>
+    <ListView Id="Comments_ListView" Caption="Comment">
+      <Columns>
+        <ColumnInfo Id="Comment" Caption="Comment" MaxLength="300" />
+        <ColumnInfo Id="user" Caption="User" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+      </Columns>
+    </ListView>
+    <ListView Id="Comments_LookupListView" Caption="Comment">
+      <Columns>
+        <ColumnInfo Id="Comment" Caption="Comment" MaxLength="300" />
+        <ColumnInfo Id="user" Caption="User" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+      </Columns>
+    </ListView>
+    <ListView Id="Department_DepartmentForms_ListView" Caption="Department Form">
+      <Columns>
+        <ColumnInfo Id="department" Caption="Department" />
+        <ColumnInfo Id="templateform" Caption="Templat Form" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Department_DetailView">
+      <Items>
+        <PropertyEditor Id="branch" Caption="Branch" />
+        <PropertyEditor Id="DepartmentName" MaxLength="100" Caption="Department Name" />
+      </Items>
+    </DetailView>
+    <ListView Id="Department_ListView">
+      <Columns>
+        <ColumnInfo Id="DepartmentName" Caption="Department Name" />
+        <ColumnInfo Id="branch" Caption="Branch" />
+      </Columns>
+    </ListView>
+    <ListView Id="Department_LookupListView">
+      <Columns>
+        <ColumnInfo Id="DepartmentName" Caption="Department Name" />
+      </Columns>
+    </ListView>
+    <ListView Id="Department_Users_ListView" ShowAutoFilterRow="False">
+      <Columns>
+        <ColumnInfo Id="Name" Width="120" MaxLength="100" MinWidth="100" SortOrder="Ascending" PropertyEditorType="DevExpress.ExpressApp.Blazor.Editors.StringPropertyEditor" Caption="Name" />
+        <ColumnInfo Id="EmployeeId" Width="130" Caption="Employee ID" />
+        <ColumnInfo Id="PhoneNumber" Width="150" Caption="Phone Number" />
+        <ColumnInfo Id="Gender" Width="100" Caption="Gender" />
+        <ColumnInfo Id="Email" Width="150" />
+        <ColumnInfo Id="Photo" Width="100" />
+        <ColumnInfo Id="Signature" Width="100" Caption="Signature Image" />
+        <ColumnInfo Id="branch" Width="100" Caption="Branch" />
+        <ColumnInfo Id="depart" Index="8" Width="120" MaxLength="50" Caption="Department" />
+        <ColumnInfo Id="chucdanh" Width="120" Index="9" Caption="Execute" />
+      </Columns>
+    </ListView>
+    <DetailView Id="DepartmentForm_DetailView">
+      <Items>
+        <PropertyEditor Id="department" Caption="Department" />
+        <PropertyEditor Id="templateform" Caption="Template Form" />
+      </Items>
+    </DetailView>
+    <ListView Id="DepartmentForm_ListView" Caption="Department Form">
+      <Columns>
+        <ColumnInfo Id="templateform" Caption="Template Form" />
+        <ColumnInfo Id="department" Caption="Department" />
+      </Columns>
+    </ListView>
+    <ListView Id="DepartmentForm_LookupListView">
+      <Columns>
+        <ColumnInfo Id="templateform" Caption="Template Form" />
+        <ColumnInfo Id="department" Caption="Department" />
+      </Columns>
+    </ListView>
+    <DetailView Id="DuyetView" CaptionColon=":" EnableCaptionColon="False" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationFormEnabled="True" RequiredFieldMark="*" ClassName="DoAn.Module.BusinessObjects.Class.ProposalApproval" Caption="Duyệt Đề Xuất" ObjectCaptionFormat="user.Name" DefaultFocusedItem="user.Name" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="ApprovalDate" PropertyName="ApprovalDate" Caption="Ngày " IsNewNode="True" />
+        <PropertyEditor Id="DueDate" PropertyName="DueDate" IsNewNode="True" />
+        <PropertyEditor Id="Note" PropertyName="Note" MaxLength="2048" RowCount="3" IsNewNode="True" />
+        <PropertyEditor Id="proposalform.Name" PropertyName="proposalform.Name" Caption="Đề Xuất" EditMask="" AllowEdit="False" IsNewNode="True" />
+        <PropertyEditor Id="proposalform.Oid" PropertyName="proposalform.Oid" IsNewNode="True" />
+        <PropertyEditor Id="proposalform.user.branch.BranchName" PropertyName="proposalform.user.branch.BranchName" Caption="Cơ Sở" MaxLength="100" AllowEdit="False" IsNewNode="True" />
+        <PropertyEditor Id="proposalform.user.depart.DepartmentName" PropertyName="proposalform.user.depart.DepartmentName" Caption="Bộ Phận" MaxLength="100" AllowEdit="False" IsNewNode="True" />
+        <PropertyEditor Id="State" PropertyName="State" IsNewNode="True" />
+        <PropertyEditor Id="user.Name" PropertyName="user.Name" Caption="Người Lập" AllowClear="False" MaxLength="100" EditMask="" AllowEdit="False" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" Caption="SimpleEditors" Direction="Vertical" IsNewNode="True">
+            <LayoutGroup Id="Auto403dd8e4-4e43-4e5e-bbc4-a137ea29314d" ShowCaption="False" Caption="Auto403dd8e4-4e43-4e5e-bbc4-a137ea29314d(3)" Direction="Horizontal" Index="0" RelativeSize="16.017316017316016" IsNewNode="True">
+              <LayoutGroup Id="Autoefd926a3-927e-4991-aef2-b17dafd5b4f4" ShowCaption="False" Caption="Autoefd926a3-927e-4991-aef2-b17dafd5b4f4(4)" Index="0" RelativeSize="56.17848970251716" IsNewNode="True">
+                <LayoutGroup Id="Auto6793d6df-7e34-42bb-99b6-a7f6a23e410f" ShowCaption="False" Caption="Auto6793d6df-7e34-42bb-99b6-a7f6a23e410f(5)" Direction="Horizontal" Index="0" RelativeSize="27.027027027027028" IsNewNode="True">
+                  <LayoutItem Id="proposalform.Name" ViewItem="proposalform.Name" Index="0" RelativeSize="94.90835030549898" IsNewNode="True" />
+                  <LayoutItem Id="proposalform" Index="1" RelativeSize="5.091649694501018" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Autoe86130fb-717e-4043-ac82-c39a84d0d357" ShowCaption="False" Caption="Autoe86130fb-717e-4043-ac82-c39a84d0d357(6)" Direction="Horizontal" Index="1" RelativeSize="47.2972972972973" IsNewNode="True">
+                  <LayoutGroup Id="Auto9a87b40e-46aa-4490-b1b5-e2cfa94af49d" ShowCaption="False" Caption="Auto9a87b40e-46aa-4490-b1b5-e2cfa94af49d(9)" Index="0" RelativeSize="94.90835030549898" IsNewNode="True">
+                    <LayoutItem Id="proposalform.user.Name" ViewItem="proposalform.user.Name" Index="0" RelativeSize="14.285714285714286" IsNewNode="True" />
+                    <LayoutItem Id="user.Name" ViewItem="user.Name" Index="1" RelativeSize="37.142857142857146" IsNewNode="True" />
+                    <LayoutItem Id="proposalform.user.depart.DepartmentName" ViewItem="proposalform.user.depart.DepartmentName" Index="2" RelativeSize="48.57142857142857" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutItem Id="user" Index="1" RelativeSize="5.091649694501018" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto872cb628-e752-418c-9791-ceb7993baca8" ShowCaption="False" Caption="Auto872cb628-e752-418c-9791-ceb7993baca8(7)" Direction="Horizontal" Index="2" RelativeSize="25.675675675675677" IsNewNode="True">
+                  <LayoutItem Id="proposalform.user.branch.BranchName" ViewItem="proposalform.user.branch.BranchName" Index="0" RelativeSize="94.90835030549898" IsNewNode="True" />
+                  <LayoutItem Id="Step" Index="1" RelativeSize="5.091649694501018" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Auto33018674-5637-4a7e-93ec-58741100ed46" ShowCaption="False" Caption="Auto33018674-5637-4a7e-93ec-58741100ed46(8)" Index="1" RelativeSize="43.82151029748284" IsNewNode="True">
+                <LayoutItem Id="ApprovalDate" ViewItem="ApprovalDate" Index="0" RelativeSize="24.324324324324323" IsNewNode="True" />
+                <LayoutItem Id="DueDate" ViewItem="DueDate" Index="1" RelativeSize="17.56756756756757" IsNewNode="True" />
+                <LayoutItem Id="State" ViewItem="State" Index="2" RelativeSize="58.108108108108105" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutItem Id="Note" ViewItem="Note" Index="1" RelativeSize="83.98268398268398" IsNewNode="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Execute_DetailView">
+      <Items>
+        <PropertyEditor Id="CodeCK" MaxLength="100" Caption="Signature Code" />
+        <PropertyEditor Id="RoleName" MaxLength="100" Caption="Execute Name" />
+        <PropertyEditor Id="RoleNumber" MaxLength="100" Caption="Execute Code" />
+      </Items>
+    </DetailView>
+    <ListView Id="Execute_ListView">
+      <Columns>
+        <ColumnInfo Id="RoleName" Caption="Execute Name" />
+        <ColumnInfo Id="RoleNumber" Caption="Execute Code" />
+        <ColumnInfo Id="CodeCK" Caption="Signature Code" />
+      </Columns>
+    </ListView>
+    <ListView Id="Execute_LookupListView">
+      <Columns>
+        <ColumnInfo Id="RoleName" Caption="Execute Name" />
+      </Columns>
+    </ListView>
+    <ListView Id="Execute_Users_ListView">
+      <Columns>
+        <ColumnInfo Id="chucdanh" Caption="Execute" />
+        <ColumnInfo Id="Name" Caption="Name" />
+        <ColumnInfo Id="EmployeeId" Caption="Employee ID" />
+        <ColumnInfo Id="PhoneNumber" Caption="Phone Number" />
+        <ColumnInfo Id="Gender" Caption="Gender" />
+        <ColumnInfo Id="Signature" Caption="Signature Image" />
+        <ColumnInfo Id="branch" Caption="Branch" />
+        <ColumnInfo Id="depart" Caption="Department" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Phieumoi" Caption="Proposal Form">
+      <Items>
+        <PropertyEditor Id="Content" Caption="Content" />
+        <PropertyEditor Id="CS" Caption="Branch" />
+        <PropertyEditor Id="Donvi" Caption="Department" AllowEdit="True" />
+        <PropertyEditor Id="Name" MaxLength="100" Caption="Proposal Name" />
+        <PropertyEditor Id="templateform" Caption="Template Form" />
+        <PropertyEditor Id="user" Caption="Creator" AllowEdit="False" />
+      </Items>
+    </DetailView>
+    <DetailView Id="ProposalApproval_DetailView">
+      <Items>
+        <PropertyEditor Id="ApprovalDate" Caption="Approval Date" />
+        <PropertyEditor Id="currentState" Caption="Process" />
+        <PropertyEditor Id="DueDate" Caption="Due Date" />
+        <PropertyEditor Id="Note" Caption="Note" />
+        <PropertyEditor Id="proposalform" Caption="Content" />
+        <PropertyEditor Id="State" Caption="State" />
+        <PropertyEditor Id="Step" Caption="Step" />
+        <PropertyEditor Id="user" Caption="Approver" />
+      </Items>
+    </DetailView>
+    <ListView Id="ProposalApproval_ListView">
+      <Columns>
+        <ColumnInfo Id="Step" Caption="Step" />
+        <ColumnInfo Id="DueDate" Caption="Due Date" />
+        <ColumnInfo Id="ApprovalDate" Caption="Approval Date" />
+        <ColumnInfo Id="Note" Caption="Note" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+        <ColumnInfo Id="user" Caption="Approver" />
+        <ColumnInfo Id="State" AllowEdit="True" Caption="State" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProposalApproval_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Step" Caption="Step" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProposalForm_Comments_ListView" Caption="Comment">
+      <Columns>
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+        <ColumnInfo Id="Comment" Caption="Comment" MaxLength="300" />
+        <ColumnInfo Id="user" Caption="User" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ProposalForm_DetailView">
+      <Items>
+        <PropertyEditor Id="Content" Caption="Content" />
+        <PropertyEditor Id="CS" Caption="Branch" />
+        <PropertyEditor Id="Dagui" Caption="Send" />
+        <PropertyEditor Id="Date" Caption="Proposal Date" />
+        <PropertyEditor Id="Daxong" Caption="Done" />
+        <PropertyEditor Id="Donvi" Caption="Deparment" />
+        <PropertyEditor Id="DSMau" Caption="DSTemplate" />
+        <PropertyEditor Id="Files" Caption="Files" />
+        <PropertyEditor Id="Name" Caption="Proposal Name" />
+        <PropertyEditor Id="Ngayduyet" Caption="Approval Date" />
+        <PropertyEditor Id="NguoiXuly" Caption="Processing After Review" />
+        <PropertyEditor Id="State" Caption="State" />
+        <PropertyEditor Id="Status" Caption="Process" />
+        <PropertyEditor Id="templateform" Caption="Template Form" />
+        <PropertyEditor Id="user" Caption="Creator" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="15.8008658008658">
+            <LayoutGroup Id="ProposalForm" Caption="Proposal Form">
+              <LayoutGroup Id="ProposalForm_col1" RelativeSize="49.882075471698116">
+                <LayoutItem Id="Date" RelativeSize="36.734693877551024" />
+                <LayoutItem Id="Name" RelativeSize="26.53061224489796" />
+              </LayoutGroup>
+              <LayoutGroup Id="ProposalForm_col2" RelativeSize="50.117924528301884" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="84.19913419913419">
+            <LayoutGroup Id="Files" Caption="Files" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="ProposalForm_DSMau_ListView">
+      <Columns>
+        <ColumnInfo Id="Content" Caption="Content" />
+        <ColumnInfo Id="FormName" Caption="Form Name" />
+        <ColumnInfo Id="category" Caption="Category" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProposalForm_Files_ListView" Caption="Attachment">
+      <Columns>
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+        <ColumnInfo Id="File" Caption="File" />
+        <ColumnInfo Id="Tailieu" Caption="File Name" />
+        <ColumnInfo Id="user" Caption="User" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProposalForm_ListView" Criteria="">
+      <Columns>
+        <ColumnInfo Id="Content" Caption="Content" />
+        <ColumnInfo Id="Daxong" Caption="Done" Index="-1" />
+        <ColumnInfo Id="Name" Caption="Proposal Name" Width="126" />
+        <ColumnInfo Id="Date" Caption="Proposal Date" SortIndex="-1" SortOrder="None" Width="124" />
+        <ColumnInfo Id="user" Caption="Creator" Width="100" />
+        <ColumnInfo Id="CS" Caption="Branch" Width="100" />
+        <ColumnInfo Id="Donvi" Caption="Department" Width="104" />
+        <ColumnInfo Id="Dagui" Caption="Send" Width="80" />
+        <ColumnInfo Id="Ngayduyet" Caption="Approval Date" SortIndex="-1" SortOrder="None" Index="6" />
+        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Index="7" Width="200" />
+        <ColumnInfo Id="templateform" Caption="Template Form" Index="8" Width="200" SortIndex="0" SortOrder="Descending" />
+        <ColumnInfo Id="State" Caption="State" Index="9" Width="115" />
+        <ColumnInfo Id="Status" Caption="Process" Index="10" Width="120" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProposalForm_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Proposal Name" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProposalForm_ProposalApprovals_ListView">
+      <Columns>
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+        <ColumnInfo Id="Step" Caption="Step" />
+        <ColumnInfo Id="DueDate" Caption="Due Date" />
+        <ColumnInfo Id="ApprovalDate" Caption="Approval Date" />
+        <ColumnInfo Id="Note" Caption="Note" />
+        <ColumnInfo Id="user" Caption="Approver" />
+        <ColumnInfo Id="State" Caption="State" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProposalForm_Sharings_ListView" Caption="Sharing">
+      <Columns>
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+        <ColumnInfo Id="user" Caption="User" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Sharing_DetailView" Caption="Sharing">
+      <Items>
+        <PropertyEditor Id="proposalform" Caption="Proposal Form" />
+        <PropertyEditor Id="user" Caption="User" />
+      </Items>
+    </DetailView>
+    <ListView Id="Sharing_ListView" Caption="Sharing">
+      <Columns>
+        <ColumnInfo Id="user" Caption="User" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+      </Columns>
+    </ListView>
+    <ListView Id="Sharing_LookupListView" Caption="Sharing">
+      <Columns>
+        <ColumnInfo Id="user" Caption="User" />
+        <ColumnInfo Id="proposalform" Caption="Proposal Form" />
+      </Columns>
+    </ListView>
+    <ListView Id="TemplateForm_ApprovalProcesses_ListView" AllowLink="False" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="templateform" Caption="Template Form" />
+        <ColumnInfo Id="Step" Caption="Step" />
+        <ColumnInfo Id="DayLeft" Width="153" Caption="Number of Approval Days" />
+        <ColumnInfo Id="execute" Caption="Approver" />
+      </Columns>
+    </ListView>
+    <ListView Id="TemplateForm_DepartmentForms_ListView">
+      <Columns>
+        <ColumnInfo Id="templateform" Caption="Template Form" />
+        <ColumnInfo Id="department" Width="1060" Caption="Department" />
+      </Columns>
+    </ListView>
+    <DetailView Id="TemplateForm_DetailView">
+      <Items>
+        <PropertyEditor Id="ApprovalProcesses" ImmediatePostData="False" AllowEdit="True" AllowUnlink="False" AllowLink="False" />
+        <PropertyEditor Id="category" Caption="Category" />
+        <PropertyEditor Id="Content" Caption="Content" />
+        <PropertyEditor Id="FormName" Caption="Form Name" />
+        <PropertyEditor Id="ProposalForms" AllowEdit="False" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="18.26792963464141">
+            <LayoutGroup Id="TemplateForm" Caption="Template Form" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="58.72801082543978">
+            <LayoutGroup Id="ProposalForms" Caption="Proposal Forms" />
+            <LayoutGroup Id="DepartmentForms" Caption="Department Forms" />
+            <LayoutGroup Id="ApprovalProcesses" Caption="Approval Processes" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="TemplateForm_ListView">
+      <Columns>
+        <ColumnInfo Id="Content" Caption="Content" />
+        <ColumnInfo Id="FormName" Caption="Form Name" />
+        <ColumnInfo Id="category" Caption="Category" />
+      </Columns>
+    </ListView>
+    <ListView Id="TemplateForm_LookupListView">
+      <Columns>
+        <ColumnInfo Id="FormName" Caption="Form Name" />
+      </Columns>
+    </ListView>
+    <ListView Id="TemplateForm_ProposalForms_ListView">
+      <Columns>
+        <ColumnInfo Id="Content" Caption="Content" />
+        <ColumnInfo Id="templateform" Caption="Template Form" />
+        <ColumnInfo Id="Name" Width="159" Caption="Proposal Name" SortIndex="0" SortOrder="Ascending" />
+        <ColumnInfo Id="Date" Width="113" Caption="Proposal Date" />
+        <ColumnInfo Id="user" Caption="Creator" />
+        <ColumnInfo Id="CS" Caption="Branch" />
+        <ColumnInfo Id="Donvi" Caption="Department" Width="100" />
+        <ColumnInfo Id="Dagui" Caption="Send" />
+        <ColumnInfo Id="Ngayduyet" Caption="Approval Date" Width="100" />
+        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Width="100" />
+        <ColumnInfo Id="Daxong" Caption="Done" />
+        <ColumnInfo Id="State" Width="100" Caption="State" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="Status" Width="100" Caption="Process" />
+      </Columns>
+    </ListView>
+    <DashboardView Id="viewDX" Caption="Đề xuất" CustomizationFormEnabled="False" ImageName="dexuat" IsNewNode="True">
+      <Items IsNewNode="True">
+        <ControlDetailItem Id="@9aecc3b5-9b79-497c-b5e7-56098ce59e6f" ControlTypeName="DoAn.Blazor.Server.Pages.ViewDXAdapter" Caption="Đề xuất" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" RelativeSize="100" Caption="Main(1)" Index="0" ShowCaption="False" IsNewNode="True">
+          <LayoutItem Id="@9aecc3b5-9b79-497c-b5e7-56098ce59e6f" ViewItem="@9aecc3b5-9b79-497c-b5e7-56098ce59e6f" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True" />
+        </LayoutGroup>
+      </Layout>
+    </DashboardView>
+  </Views>
+</Application>

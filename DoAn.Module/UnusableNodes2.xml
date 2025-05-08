@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="ProposalForm_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ProposalForm">
+              <LayoutGroup Id="ProposalForm_col1">
+                <LayoutItem Id="Content" RelativeSize="21.666666666666668" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="TemplateForm_ProposalForms_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Content" Width="81" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

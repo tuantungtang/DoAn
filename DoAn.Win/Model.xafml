@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Logo="ExpressAppLogo">
+  <NavigationItems NavigationStyle="Accordion" DefaultChildItemsDisplayStyle="List" />
+  <Options UIType="TabbedMDI" FormStyle="Ribbon">
+    <Dashboards EnableCustomization="False" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="24.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="24.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerWindowsFormsModule" Version="24.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="24.1.6.0" IsNewNode="True" />
+  </SchemaModules>
+</Application>

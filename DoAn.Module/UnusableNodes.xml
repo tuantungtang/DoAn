@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Branch_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <TabbedGroup Id="Tabs" RelativeSize="95.23809523809524">
+            <LayoutGroup Id="Employees" Caption="Nhân Sự" RelativeSize="100">
+              <LayoutItem Id="Employees" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Departments" RelativeSize="100" Caption="Bộ Phận">
+              <LayoutItem Id="Departments" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Category_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="TemplateForms_Group" Caption="Mẫu Đơn" Direction="Vertical" RelativeSize="95.23809523809524">
+            <LayoutItem Id="TemplateForms" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

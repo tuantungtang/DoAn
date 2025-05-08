@@ -1,0 +1,129 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <Deterministic>false</Deterministic>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Configurations>Debug;Release;EasyTest</Configurations>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Images\bophan.svg" />
+    <None Remove="Images\checkdb.svg" />
+    <None Remove="Images\chucvu.svg" />
+    <None Remove="Images\comment.svg" />
+    <None Remove="Images\coso.svg" />
+    <None Remove="Images\database-save.svg" />
+    <None Remove="Images\dexuat.svg" />
+    <None Remove="Images\duyet.svg" />
+    <None Remove="Images\dxmoi.svg" />
+    <None Remove="Images\file.svg" />
+    <None Remove="Images\import.svg" />
+    <None Remove="Images\mauvb.svg" />
+    <None Remove="Images\nhanvien.svg" />
+    <None Remove="Images\phanloai.svg" />
+    <None Remove="Images\share.svg" />
+    <None Remove="Images\steps.svg" />
+    <None Remove="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\bophan.svg" />
+    <EmbeddedResource Include="Images\checkdb.svg" />
+    <EmbeddedResource Include="Images\chucvu.svg" />
+    <EmbeddedResource Include="Images\comment.svg" />
+    <EmbeddedResource Include="Images\coso.svg" />
+    <EmbeddedResource Include="Images\database-save.svg" />
+    <EmbeddedResource Include="Images\dexuat.svg" />
+    <EmbeddedResource Include="Images\duyet.svg" />
+    <EmbeddedResource Include="Images\dxmoi.svg" />
+    <EmbeddedResource Include="Images\file.svg" />
+    <EmbeddedResource Include="Images\import.svg" />
+    <EmbeddedResource Include="Images\mauvb.svg" />
+    <EmbeddedResource Include="Images\nhanvien.svg" />
+    <EmbeddedResource Include="Images\phanloai.svg" />
+    <EmbeddedResource Include="Images\share.svg" />
+    <EmbeddedResource Include="Images\steps.svg" />
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Chart" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.MultiTenancy.Xpo" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Notifications" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Office" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Scheduler" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Security" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="24.2.5" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="24.2.5" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="24.2.5" />
+    <PackageReference Include="Azure.Identity" Version="1.13.1" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.2.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.ExpressApp.Blazor.v24.2">
+      
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="UnusableNodes.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes1.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes10.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes11.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes12.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes13.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes15.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes16.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes2.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes3.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes4.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes5.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes6.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes7.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes8.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes9.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+  </ItemGroup>
+</Project>

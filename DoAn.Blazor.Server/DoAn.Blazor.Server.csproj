@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <Deterministic>false</Deterministic>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Configurations>Debug;Release;EasyTest</Configurations>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Images\back.svg" />
+    <None Remove="Images\gui.svg" />
+    <None Remove="Model.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model.xafml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\back.svg" />
+    <EmbeddedResource Include="Images\gui.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+    <PackageReference Include="DevExpress.Drawing.Skia" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Blazor" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.MultiTenancy.Blazor.Xpo" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Notifications.Blazor" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Office.Blazor" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2.Blazor" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Scheduler.Blazor" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="24.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation.Blazor" Version="24.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
+    <PackageReference Include="MimeTypesMap" Version="1.0.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DoAn.Module\DoAn.Module.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="UnusableNodes.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes1.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes10.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes11.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes2.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes3.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes4.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes5.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes6.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes7.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes9.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+    </None>
+  </ItemGroup>
+</Project>

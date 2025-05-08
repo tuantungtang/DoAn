@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="TemplateForm_ProposalForms_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Content" Width="93" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

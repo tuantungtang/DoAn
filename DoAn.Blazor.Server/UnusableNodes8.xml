@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="DuyetView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Auto403dd8e4-4e43-4e5e-bbc4-a137ea29314d">
+              <LayoutGroup Id="Autoefd926a3-927e-4991-aef2-b17dafd5b4f4">
+                <LayoutGroup Id="Autoe86130fb-717e-4043-ac82-c39a84d0d357">
+                  <LayoutGroup Id="Auto9a87b40e-46aa-4490-b1b5-e2cfa94af49d">
+                    <LayoutItem Id="proposalform.user.Name" ViewItem="proposalform.user.Name" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

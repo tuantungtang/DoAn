@@ -1,0 +1,64 @@
+﻿
+.photo-preview {
+    width: 595px; /* <<< ĐẶT CHIỀU RỘNG KHUNG MONG MUỐN (VÍ DỤ: 170px) */
+    height: 190px; /* <<< ĐẶT CHIỀU CAO KHUNG MONG MUỐN (VÍ DỤ: 170px) */
+    overflow: hidden; /* Quan trọng: Ẩn mọi thứ tràn ra ngoài khung này */
+    margin-left: 5px 0; /* Tùy chọn: Khoảng cách */
+    position: relative; /* Giữ context cho các thành phần con */
+    box-sizing: border-box;
+    padding: 0 !important; /* Thử reset padding nếu có xung đột */
+    display: flex; /* Thử dùng flex để đảm bảo container con chiếm đủ không gian */
+    justify-content: center;
+    align-items: center;
+}
+
+    /* 2. Định dạng cho thẻ div.xaf-image-container nằm bên trong */
+    .photo-preview .xaf-image-container {
+        width: 100%; /* Khung chứa bên trong chiếm toàn bộ chiều rộng của .photo-preview */
+        height: 100%; /* Khung chứa bên trong chiếm toàn bộ chiều cao của .photo-preview */
+        position: relative; /* Để định vị ảnh bên trong nếu cần */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0; /* Tạm thời thêm màu nền để xem khung này có hiện đúng kích thước không */
+    }
+
+        /* 3. Định dạng cho thẻ <img> cụ thể nằm bên trong div.xaf-image-container */
+        .photo-preview .xaf-image-container img.xaf-component {
+            display: block;
+            width: 100%; /* Ảnh chiếm 100% chiều rộng của .xaf-image-container */
+            height: 100%; /* Ảnh chiếm 100% chiều cao của .xaf-image-container */
+            object-fit: cover; /* Quan trọng: Co giãn ảnh để lấp đầy, giữ tỷ lệ, cắt phần thừa */
+            /* >>> Thử đổi thành 'contain' nếu muốn thấy toàn bộ ảnh */
+            max-width: 100%; /* Đảm bảo ảnh không bị lỗi nếu ảnh gốc nhỏ hơn khung */
+
+        }
+
+    .photo-preview .dxbl-fl-ctrl {
+        margin-left: 100px !important;
+        height: 100% !important;
+        width: 100% !important;
+    }
+    .photo-preview .img-thumbnail {
+        height: 100% !important;
+        width: 100% !important;
+    }
+    .photo-preview .xaf-image-overlay xaf-image-menu-overlay {
+        height: 100% !important;
+        width: 100% !important;
+    }
+    
+    .photo-preview .xaf-image-editor {
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    .photo-preview .dxbl-fl-cpt.xaf-item-photo.dxbl-text {
+        margin-left: 190px !important;
+    }
+
+    .photo-preview .dxbl-fl-cpt.xaf-item-signature.dxbl-text {
+        margin-left: 190px !important;
+    }
+
+

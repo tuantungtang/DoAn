@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Employee_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="21.428571428571427">
+            <LayoutGroup Id="Employee">
+              <LayoutGroup Id="Employee_col1" RelativeSize="49.882075471698116">
+                <LayoutItem Id="EmployeeId" RelativeSize="17.333333333333332" />
+                <LayoutItem Id="Name" RelativeSize="24" />
+                <LayoutItem Id="PhoneNumber" RelativeSize="17.333333333333332" />
+                <LayoutItem Id="Gender" RelativeSize="17.333333333333332" />
+                <LayoutItem Id="Email" RelativeSize="24" />
+              </LayoutGroup>
+              <LayoutGroup Id="Employee_col2" RelativeSize="50.117924528301884">
+                <LayoutItem Id="Avatar" RelativeSize="24" />
+                <LayoutItem Id="Signature" RelativeSize="17.333333333333332" />
+                <LayoutItem Id="branch" RelativeSize="17.333333333333332" />
+                <LayoutItem Id="department" RelativeSize="17.333333333333332" />
+                <LayoutItem Id="role" RelativeSize="24" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="78.57142857142857">
+            <LayoutGroup Id="Files" Caption="Tệp Tài Liệu" />
+            <LayoutGroup Id="ProposalForms" Caption="Phiếu Đề Xuất" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Role_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="12.449255751014885">
+            <LayoutGroup Id="Role" RelativeSize="100">
+              <LayoutItem Id="RoleName" RelativeSize="36.95652173913044" />
+              <LayoutItem Id="RoleNumber" RelativeSize="28.26086956521739" />
+              <LayoutItem Id="BinaryCode" RelativeSize="34.78260869565217" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="87.55074424898511">
+            <LayoutGroup Id="Employees" Caption="Nhân Sự" RelativeSize="100">
+              <LayoutItem Id="Employees" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="ApprovalProcesses" RelativeSize="100" Caption="Quy Trình Phê Duyệt">
+              <LayoutItem Id="ApprovalProcesses" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ProposalForm_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ProposalForm">
+              <LayoutGroup Id="ProposalForm_col1">
+                <LayoutItem Id="Status" RelativeSize="36.734693877551024" />
+              </LayoutGroup>
+              <LayoutGroup Id="ProposalForm_col2">
+                <LayoutItem Id="State" RelativeSize="36.734693877551024" />
+                <LayoutItem Id="employee" RelativeSize="26.53061224489796" />
+                <LayoutItem Id="templateform" RelativeSize="36.734693877551024" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="TemplateForm_ApprovalProcesses_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="role" Width="374" />
+      </Columns>
+    </ListView>
+    <DetailView Id="TemplateForm_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors" RelativeSize="23.00405953991881">
+            <LayoutItem Id="Content" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="TemplateForm">
+              <LayoutGroup Id="TemplateForm_col2" RelativeSize="50.147492625368734" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="TemplateForm_ProposalForms_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="employee" Width="144" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>
