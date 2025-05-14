@@ -2,6 +2,7 @@
 ///ProposalApproval_ListView
 using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
+using DevExpress.PivotGrid.ServerMode.OperationGraph;
 using DoAn.Module.BusinessObjects.Authentication;
 using DoAn.Module.BusinessObjects.Class;
 using DocumentFormat.OpenXml.ExtendedProperties;
@@ -37,10 +38,13 @@ namespace DoAn.Module.Controllers.ProposalApproval_Listview
                 object obj = View.CurrentObject;
                 if (user.chucdanh is not null) { }
                 Execute execute = user.chucdanh;
-                Execute cur = ObjectSpace.GetObject<Execute>(execute); 
+                Execute cur = ObjectSpace.GetObject<Execute>(execute);
                 //View.CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("user.Oid = ?", ObjectSpace.GetKeyValue(user));
-                
+
                 View.CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("user.chucdanh = ?", cur.Oid);
+                //View.CollectionSource.Criteria["Filter2"] = CriteriaOperator.Parse("");
+                //CriteriaOperator criteria1 = CriteriaOperator.Parse("user.chucdanh = ?", cur.Oid);
+                //CriteriaOperator criteria2 = CriteriaOperator.Parse("user.chucdanh = ?", cur.Oid);
 
             }
 

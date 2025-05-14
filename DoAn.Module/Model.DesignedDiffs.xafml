@@ -69,6 +69,7 @@
       </Layout>
     </DetailView>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <ListView Id="ApplicationUser_Notifies_ListView" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False" />
     <ListView Id="ApplicationUser_Sharings_ListView">
       <Columns>
         <ColumnInfo Id="proposalform" SortIndex="0" SortOrder="Ascending" />
@@ -169,6 +170,7 @@
       </Layout>
     </DetailView>
     <ListView Id="Execute_Users_ListView" AllowNew="False" AllowLink="False" AllowEdit="True" />
+    <ListView Id="Notifications_ListView" AllowNew="False" AllowUnlink="False" AllowEdit="False" />
     <DetailView Id="Phieumoi" CaptionColon=":" EnableCaptionColon="True" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationFormEnabled="True" RequiredFieldMark="*" ClassName="DoAn.Module.BusinessObjects.Class.ProposalForm" DefaultFocusedItem="Content" Caption="Phiếu Đề Xuất" IsNewNode="True">
       <Items IsNewNode="True">
         <PropertyEditor Id="Content" PropertyName="Content" IsNewNode="True" />
@@ -188,14 +190,8 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="ProposalApproval_attachments_ListView">
-      <Columns>
-        <ColumnInfo Id="File" SortOrder="Ascending" />
-      </Columns>
-    </ListView>
     <DetailView Id="ProposalApproval_DetailView" AllowDelete="False" AllowEdit="True" AllowNew="False">
       <Items>
-        <PropertyEditor Id="attachments" AllowEdit="False" />
         <PropertyEditor Id="currentState" PropertyName="proposalform.Status" IsNewNode="True" />
         <PropertyEditor Id="Note" MaxLength="100" RowCount="0" />
         <PropertyEditor Id="proposalform" PropertyName="proposalform.Content" AllowEdit="False" />
@@ -225,14 +221,10 @@
               <LayoutItem Id="proposalform_Copy" ViewItem="proposalform_Copy" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="attachments_Group" Caption="attachments" RelativeSize="20.408163265306122" Direction="Vertical" Removed="True">
-            <LayoutItem Id="proposalform_Copy" ViewItem="proposalform_Copy" Index="0" RelativeSize="100" IsNewNode="True" />
-            <LayoutItem Id="attachments" Removed="True" />
-          </LayoutGroup>
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="ProposalApproval_ListView" Criteria="" AllowEdit="True" AllowNew="False" AllowDelete="False" />
+    <ListView Id="ProposalApproval_ListView" Criteria="[State] = ##Enum#DoAn.Module.BusinessObjects.Class.Define+EStatusDuyet,choduyet# And [DueDate] &lt;= CURRENTDATE()" AllowEdit="True" AllowNew="False" AllowDelete="False" />
     <DetailView Id="ProposalForm_DetailView" DefaultFocusedItem="Content">
       <Items>
         <PropertyEditor Id="HexCode" AllowEdit="False" />
@@ -309,6 +301,7 @@
         <ColumnInfo Id="Percentage" Index="12" />
       </Columns>
     </ListView>
+    <ListView Id="ProposalForm_Notifications_ListView" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False" />
     <ListView Id="TemplateForm_ApprovalProcesses_ListView">
       <Columns>
         <ColumnInfo Id="Step" Width="168" />
