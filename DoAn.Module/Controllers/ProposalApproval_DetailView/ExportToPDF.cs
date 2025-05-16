@@ -13,6 +13,7 @@ using System.IO;
 using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp.Xpo;
 using DocumentFormat.OpenXml.ExtendedProperties;
+using System.Security.Cryptography;
 
 
 namespace DoAn.Module.Controllers.ProposalApproval_DetailView
@@ -41,7 +42,6 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                 DocumentPosition pos = kyProcessor.Document.CreatePosition(0);
                 kyProcessor.Document.InsertRtfText(pos, wordProcessor.RtfText);
 
-                // Thay thế {Hoten} bằng tên người dùng
 
 
                 // Thêm ảnh chữ ký chính
@@ -61,71 +61,63 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
 
                 // Xử lý chữ ký theo từng chức danh
                 Session session = proposalForm.Session;
-                XPCollection<Execute> chucdanhs = new(session)
+                List<Execute> chucdanhs = new List<Execute>();
+                foreach (ProposalApproval proposal in proposalForm.ProposalApprovals)
                 {
-                    Criteria = CriteriaOperator.Parse("Execute=?", false)
-                };
-                //XPCollection<Execute> chucdanhs = new(session);
-                //foreach (ApprovalProcess approvalProcess in proposalForm.templateform.ApprovalProcesses)
-                //{
-                //    chucdanhs.Add(approvalProcess.execute);
-                //}
+                    ApplicationUser ID = proposal.user;
+                    ApplicationUser userInCurrentSpace = objectSpace.GetObjectByKey<ApplicationUser>(ID.Oid);
+                    if (userInCurrentSpace.chucdanh != null)
+                    {
+                        Execute executeInCurrentSpace = objectSpace.GetObjectByKey<Execute>(userInCurrentSpace.chucdanh.Oid);
+                       
+                        chucdanhs.Add(objectSpace.GetObject(executeInCurrentSpace));
+                        
+                    }
+                }
 
+                foreach (Execute item in chucdanhs)
+                {
+                    string ma = item.Code;
+                    string machuky = item.CodeCK;
+                    if (machuky != null)
+                    {
+                        //CriteriaOperator criteria = GroupOperator.Combine(
+                        //    GroupOperatorType.And,
+                        //    new ContainsOperator("ChucvuNVs", new BinaryOperator("Chucvu", item)),
+                        //    CriteriaOperator.Parse("Donvi=?", proposalForm.Donvi)
+                        //);
 
+                        //ApplicationUser au = objectSpace.FindObject<ApplicationUser>(criteria) ??
+                        //            objectSpace.FindObject<ApplicationUser>(new ContainsOperator("ChucvuNVs", new BinaryOperator("Chucvu", item)));
+                        ApplicationUser au = item.Users[0];
+                        try
+                        {
+                             au = item.Users[1];
+                        }
+                        catch
+                        {
+                             au = item.Users[0];
+                        }
 
-                // reload the proposalForm in this object space
-
-
-                //List<Execute> chucdanhs = new List<Execute>();
-
-                //foreach (string id in proposalForm.approved)
-                //{
-                //    Guid ID = Guid.Parse(id);
-                //    ApplicationUser userInCurrentSpace = objectSpace.GetObjectByKey<ApplicationUser>(id);
-                //    if (userInCurrentSpace.chucdanh != null)
-                //    {
-                //        Execute executeInCurrentSpace = objectSpace.GetObjectByKey<Execute>(userInCurrentSpace.chucdanh.Oid);
-                //        if (executeInCurrentSpace != null && !chucdanhs.Contains(executeInCurrentSpace))
-                //        {
-                //            chucdanhs.Add(executeInCurrentSpace);
-                //        }
-                //    }
-                //}
-
-                //foreach (Execute item in chucdanhs)
-                //{
-                //    string ma = item.Code;
-                //    string machuky = item.CodeCK;
-                //    if (!string.IsNullOrEmpty(ma))
-                //    {
-                //        CriteriaOperator criteria = GroupOperator.Combine(
-                //            GroupOperatorType.And,
-                //            new ContainsOperator("ChucvuNVs", new BinaryOperator("Chucvu", item)),
-                //            CriteriaOperator.Parse("Donvi=?", proposalForm.Donvi)
-                //        );
-
-                //        ApplicationUser au = objectSpace.FindObject<ApplicationUser>(criteria) ??
-                //                    objectSpace.FindObject<ApplicationUser>(new ContainsOperator("ChucvuNVs", new BinaryOperator("Chucvu", item)));
-
-                //        if (au != null)
-                //        {
-                //            kyProcessor.Document.ReplaceAll(ma, au.Name, SearchOptions.None);
-                //            if (au.Signature != null)
-                //            {
-                //                using var ms = new MemoryStream(au.Signature);
-                //                Image img = Image.FromStream(ms);
-                //                DocumentRange[] ranges = kyProcessor.Document.FindAll(machuky, SearchOptions.None, kyProcessor.Document.Range);
-                //                if (ranges.Length > 0)
-                //                {
-                //                    DocumentRange range = ranges[0];
-                //                    DocumentPosition startPosition = range.Start;
-                //                    kyProcessor.Document.Delete(range);
-                //                    kyProcessor.Document.Images.Insert(startPosition, DocumentImageSource.FromImage(img));
-                //                }
-                //            }
-                //        }
-                //    }
-                //}
+                        if (au != null)
+                        {
+                            kyProcessor.Document.ReplaceAll(machuky, au.Name, SearchOptions.None);
+                            if (au.Signature != null)
+                            {
+                                using var ms = new MemoryStream(au.Signature);
+                                Image img = Image.FromStream(ms);
+                                DocumentRange[] ranges = kyProcessor.Document.FindAll(machuky, SearchOptions.None, kyProcessor.Document.Range);
+                                if (ranges.Length > 0)
+                                {
+                                    DocumentRange range = ranges[10];
+                                    DocumentPosition startPosition = range.Start;
+                                    kyProcessor.Document.Delete(range);
+                                    kyProcessor.Document.Images.Insert(startPosition, DocumentImageSource.FromImage(img));
+                                }
+                            }
+                        }
+                    }
+                }
 
                 // Tùy chọn xuất PDF
                 PdfExportOptions options = new()

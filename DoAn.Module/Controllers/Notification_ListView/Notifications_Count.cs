@@ -1,5 +1,8 @@
-﻿using DevExpress.Data.Filtering;
+﻿using DevExpress.CodeParser;
+using DevExpress.Data.Filtering;
+using DevExpress.Entity.Model.Metadata;
 using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.Notifications;
 using DevExpress.ExpressApp.SystemModule;
 using DevExpress.XtraSpreadsheet.Commands;
@@ -10,6 +13,7 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,25 +26,47 @@ namespace DoAn.Module.Controllers.Notification_ListView
             //TargetWindowType = WindowType.;
             //https://supportcenter.devexpress.com/ticket/details/t1002750/xaf-how-to-show-the-number-of-list-view-items-in-the-navigation-control
         }
-        protected override void OnActivated()
+        private ShowNavigationItemController navigationItemController;
+        protected override void OnFrameAssigned()
         {
-            base.OnActivated();
-            var user = Define.GetCurrentNhanvien();
-            Application.LoggingOn += Application_LoggingOn;
-            
+            UnsubscribeFromEvents();
+            base.OnFrameAssigned();
+            navigationItemController = Frame.GetController<ShowNavigationItemController>();
+            if (navigationItemController is not null)
+            {
+                navigationItemController.NavigationItemCreated += NavigationItemController_NavigationItemCreated;
+            }
         }
 
-        private void Application_LoggingOn(object sender, LogonEventArgs e)
+        private void NavigationItemController_NavigationItemCreated(object sender, NavigationItemCreatedEventArgs e)
         {
-            var user = Define.GetCurrentNhanvien();
-            IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(Notifications));
-            int count = objectSpace.GetObjects<Notifications>()
-                                   .Count(n => n.user.Oid == user.Oid);
+            var lvid = Application.GetListViewId(typeof(Notifications));
+            if (e.ModelNavigationItem.Id == lvid)
+            {
+
+                using (IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(Notifications)))
+                {
+                    IModelListView modelListView = (IModelListView)e.ModelNavigationItem.View;
+                    var user = Define.GetCurrentNhanvien();
+                    int objectCount = objectSpace.GetObjectsCount(typeof(Notifications), CriteriaOperator.Parse(modelListView.Criteria) & CriteriaOperator.Parse("user.Oid = ?", user.Oid));
+
+                    e.NavigationItem.Caption = "Notifications " + (objectCount > 0 ? $"({objectCount})" : string.Empty);
+                }
+            }
         }
 
-        private void Application_LoggedOn(object sender, LogonEventArgs e)
+        private void UnsubscribeFromEvents()
         {
-            int i = 0;
+            if (navigationItemController != null)
+            {
+                navigationItemController.NavigationItemCreated -= NavigationItemController_NavigationItemCreated;
+                navigationItemController = null;
+            }
+        }
+        protected override void Dispose(bool disposing)
+        {
+            UnsubscribeFromEvents();
+            base.Dispose(disposing);
         }
     }
 }

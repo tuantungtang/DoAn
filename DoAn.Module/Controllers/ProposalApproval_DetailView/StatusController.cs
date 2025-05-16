@@ -121,7 +121,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
         {
             int step_now = proposalApproval.Step;
             
-            ApplicationUser user_add = proposalForm.ProposalApprovals[step_now].user;
+            ApplicationUser user_add = proposalForm.ProposalApprovals[step_now-1].user;
             
             foreach (ProposalApproval proposalApproval1 in proposalForm.ProposalApprovals)
             {
