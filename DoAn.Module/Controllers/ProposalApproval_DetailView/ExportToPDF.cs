@@ -101,7 +101,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
 
                         if (au != null)
                         {
-                            kyProcessor.Document.ReplaceAll(machuky, au.Name, SearchOptions.None);
+                            //kyProcessor.Document.ReplaceAll(machuky, au.Name, SearchOptions.None);
                             if (au.Signature != null)
                             {
                                 using var ms = new MemoryStream(au.Signature);
@@ -109,7 +109,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                                 DocumentRange[] ranges = kyProcessor.Document.FindAll(machuky, SearchOptions.None, kyProcessor.Document.Range);
                                 if (ranges.Length > 0)
                                 {
-                                    DocumentRange range = ranges[10];
+                                    DocumentRange range = ranges[0];
                                     DocumentPosition startPosition = range.Start;
                                     kyProcessor.Document.Delete(range);
                                     kyProcessor.Document.Images.Insert(startPosition, DocumentImageSource.FromImage(img));
