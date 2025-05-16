@@ -224,7 +224,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="ProposalApproval_ListView" Criteria="[State] = ##Enum#DoAn.Module.BusinessObjects.Class.Define+EStatusDuyet,choduyet#" AllowEdit="True" AllowNew="False" AllowDelete="False" />
+    <ListView Id="ProposalApproval_ListView" Criteria="" AllowEdit="True" AllowNew="False" AllowDelete="False" />
     <DetailView Id="ProposalForm_DetailView" DefaultFocusedItem="Content">
       <Items>
         <PropertyEditor Id="HexCode" AllowEdit="False" />
