@@ -81,27 +81,11 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                     string machuky = item.CodeCK;
                     if (machuky != null)
                     {
-                        //CriteriaOperator criteria = GroupOperator.Combine(
-                        //    GroupOperatorType.And,
-                        //    new ContainsOperator("ChucvuNVs", new BinaryOperator("Chucvu", item)),
-                        //    CriteriaOperator.Parse("Donvi=?", proposalForm.Donvi)
-                        //);
-
-                        //ApplicationUser au = objectSpace.FindObject<ApplicationUser>(criteria) ??
-                        //            objectSpace.FindObject<ApplicationUser>(new ContainsOperator("ChucvuNVs", new BinaryOperator("Chucvu", item)));
                         ApplicationUser au = item.Users[0];
-                        try
-                        {
-                             au = item.Users[1];
-                        }
-                        catch
-                        {
-                             au = item.Users[0];
-                        }
+                        
 
                         if (au != null)
                         {
-                            //kyProcessor.Document.ReplaceAll(machuky, au.Name, SearchOptions.None);
                             if (au.Signature != null)
                             {
                                 using var ms = new MemoryStream(au.Signature);
@@ -114,6 +98,14 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                                     kyProcessor.Document.Delete(range);
                                     kyProcessor.Document.Images.Insert(startPosition, DocumentImageSource.FromImage(img));
                                 }
+                                DocumentRange[] ranges2 = kyProcessor.Document.FindAll(ma, SearchOptions.None, kyProcessor.Document.Range);
+                                if (ranges2.Length > 0)
+                                {
+                                    DocumentRange text_range = ranges2[0];
+                                    
+                                    kyProcessor.Document.Replace(text_range, au.Name.ToString());
+                                }
+                                
                             }
                         }
                     }
