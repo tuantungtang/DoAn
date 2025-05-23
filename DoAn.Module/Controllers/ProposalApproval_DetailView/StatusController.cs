@@ -19,6 +19,7 @@ using DevExpress.Persistent.Base.General;
 
 using static DoAn.Module.BusinessObjects.Class.Define;
 using DoAn.Module.Controllers.Notification;
+using System.Security.Cryptography;
 namespace DoAn.Module.Controllers.ProposalApproval_DetailView
 {
     public class StatusController : ViewController
@@ -96,13 +97,14 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
             foreach (Sharing share in proposalForm.Sharings)
             {
                 if (share.user != null)
-                    notification.user = session.GetObjectByKey<ApplicationUser>(share.user.Oid);
+                    notification.user = ObjectSpace.GetObjectByKey<ApplicationUser>(share.user.Oid);
             }
-            if (proposalForm.NguoiXuly != null)
-                notification.user = session.GetObjectByKey<ApplicationUser>(proposalForm.NguoiXuly.Oid);
             if (proposalForm.user != null)
-                notification.user = session.GetObjectByKey<ApplicationUser>(proposalForm.user.Oid);
-            notification.proposalForms.Add(session.GetObjectByKey<ProposalForm>(proposalForm.Oid));
+            {
+                notification.user = ObjectSpace.GetObjectByKey<ApplicationUser>(proposalForm.user.Oid);
+            }
+                
+            notification.proposalForms.Add(ObjectSpace.GetObjectByKey<ProposalForm>(proposalForm.Oid));
             string vbState;
             if (proposalForm.State == Define.EStatusVB.daduyet)
             {

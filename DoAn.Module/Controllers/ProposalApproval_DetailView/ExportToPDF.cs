@@ -90,6 +90,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                             {
                                 using var ms = new MemoryStream(au.Signature);
                                 Image img = Image.FromStream(ms);
+                               
                                 DocumentRange[] ranges = kyProcessor.Document.FindAll(machuky, SearchOptions.None, kyProcessor.Document.Range);
                                 if (ranges.Length > 0)
                                 {
@@ -104,6 +105,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                                     DocumentRange text_range = ranges2[0];
                                     
                                     kyProcessor.Document.Replace(text_range, au.Name.ToString());
+                                    
                                 }
                                 
                             }
