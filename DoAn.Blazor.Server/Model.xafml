@@ -71,6 +71,7 @@
       <RuleUniqueValue Id="PermissionPolicyUser_UserName_RuleUniqueValue" CustomMessageTemplate="'User Name' đã tồn tại trong hệ thống" />
       <RuleUserNameFormatIsCorrect Id="PermissionPolicyUser_UserName_RuleUserNameFormatIsCorrect" CustomMessageTemplate="'User Name' không đúng định dạng" />
       <RuleCriteria Id="PermissionPolicyUser_XPO_Prevent_delete_logged_in_user" CustomMessageTemplate="Không thể xóa người dùng hiện đang đăng nhập. Vui lòng đăng nhập bằng tài khoản người dùng khác và thử lại." />
+      <RuleRegularExpression Id="RegularExpress.User.Gender" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="Gender" Pattern="^(nam|nữ)$" TargetContextIDs="Save" CustomMessageTemplate="'Gender' only accepts the values ​​''nam'' or ''nữ'' !" IsNewNode="True" />
       <RuleRegularExpression Id="RegularExpress.User.Name.ChuHoa" Pattern="^(\p{Lu}[\p{Ll}]*)( +\p{Lu}[\p{Ll}]*)*$" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="Name" TargetContextIDs="Save" CustomMessageTemplate="'Name' The first letter of each word must be capitalized." IsNewNode="True" />
       <RuleRegularExpression Id="RegularExpress.User.Name.khongChua2KhoangTrang" TargetType="DoAn.Module.BusinessObjects.Authentication.ApplicationUser" TargetPropertyName="Name" TargetContextIDs="Save" Pattern="^(?!.* {2})" CustomMessageTemplate="'Name' cannot contain 2 consecutive spaces" IsNewNode="True" />
       <RuleRegularExpression Id="RuleRegularExpress.Attachment.TenTaiLieu" TargetType="DoAn.Module.BusinessObjects.Class.Attachment" TargetContextIDs="Save" Pattern="^(?!\s*$).+" TargetPropertyName="Tailieu" CustomMessageTemplate="'File Name' cannot be empty!" IsNewNode="True" />
@@ -170,15 +171,16 @@
     </ListView>
     <ListView Id="ApplicationUser_ListView">
       <Columns>
-        <ColumnInfo Id="Name" SortIndex="-1" SortOrder="None" Caption="Name" Width="121" />
-        <ColumnInfo Id="EmployeeId" SortIndex="0" SortOrder="Descending" Caption="Employee ID" />
-        <ColumnInfo Id="PhoneNumber" Caption="Phone Number" />
-        <ColumnInfo Id="Gender" Caption="Gender" />
+        <ColumnInfo Id="Name" SortIndex="-1" SortOrder="None" Caption="Name" Width="150" />
+        <ColumnInfo Id="EmployeeId" SortIndex="0" SortOrder="Descending" Caption="Employee ID" Width="150" />
+        <ColumnInfo Id="PhoneNumber" Caption="Phone Number" Width="150" />
+        <ColumnInfo Id="Gender" Caption="Gender" Width="100" />
+        <ColumnInfo Id="Email" Width="150" />
         <ColumnInfo Id="Photo" ImageSizeMode="AutoSize" ImageEditorCustomHeight="100" ImageEditorFixedHeight="0" ImageEditorFixedWidth="0" Width="100" />
         <ColumnInfo Id="Signature" Caption="Signature Image" ImageEditorCustomHeight="100" Width="100" MinWidth="50" ImageSizeMode="AutoSize" />
-        <ColumnInfo Id="branch" Caption="Branch" />
-        <ColumnInfo Id="depart" Caption="Department" />
-        <ColumnInfo Id="chucdanh" Caption="Execute" />
+        <ColumnInfo Id="branch" Caption="Branch" Width="150" />
+        <ColumnInfo Id="depart" Caption="Department" Width="150" />
+        <ColumnInfo Id="chucdanh" Caption="Execute" Width="150" />
       </Columns>
     </ListView>
     <ListView Id="ApplicationUser_LookupListView">
@@ -199,19 +201,21 @@
     </ListView>
     <ListView Id="ApplicationUser_ProposalForms_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False">
       <Columns>
-        <ColumnInfo Id="Content" Caption="Content" />
+        <ColumnInfo Id="Content" Caption="Content" Width="150" />
         <ColumnInfo Id="user" Caption="Creator" />
         <ColumnInfo Id="Name" Caption="Proposal Name" Width="150" />
         <ColumnInfo Id="Date" Caption="Proposal Date" Width="150" />
-        <ColumnInfo Id="CS" Caption="Branch" Width="120" />
+        <ColumnInfo Id="HexCode" Width="100" />
+        <ColumnInfo Id="CS" Caption="Branch" Width="150" />
         <ColumnInfo Id="Donvi" Caption="Deparment" Width="150" MinWidth="100" />
         <ColumnInfo Id="Dagui" Caption="Send" Width="80" />
         <ColumnInfo Id="Ngayduyet" Caption="Approval Date" Width="150" />
-        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Width="182" />
-        <ColumnInfo Id="Daxong" Caption="Done" Width="100" />
+        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Width="150" />
+        <ColumnInfo Id="Daxong" Caption="Done" Width="80" />
         <ColumnInfo Id="templateform" Caption="Template Form" Width="150" />
         <ColumnInfo Id="State" Caption="State" Width="100" />
         <ColumnInfo Id="Status" Caption="Process" Width="100" />
+        <ColumnInfo Id="Percentage" Width="130" />
       </Columns>
     </ListView>
     <ListView Id="ApplicationUser_Proposals_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" Removed="True">
@@ -368,16 +372,16 @@
     </ListView>
     <ListView Id="Department_Users_ListView" ShowAutoFilterRow="False">
       <Columns>
-        <ColumnInfo Id="Name" Width="120" MaxLength="100" MinWidth="100" SortOrder="Ascending" PropertyEditorType="DevExpress.ExpressApp.Blazor.Editors.StringPropertyEditor" Caption="Name" />
-        <ColumnInfo Id="EmployeeId" Width="130" Caption="Employee ID" />
+        <ColumnInfo Id="Name" Width="150" MaxLength="100" MinWidth="100" SortOrder="Ascending" PropertyEditorType="DevExpress.ExpressApp.Blazor.Editors.StringPropertyEditor" Caption="Name" />
+        <ColumnInfo Id="EmployeeId" Width="150" Caption="Employee ID" />
         <ColumnInfo Id="PhoneNumber" Width="150" Caption="Phone Number" />
         <ColumnInfo Id="Gender" Width="100" Caption="Gender" />
         <ColumnInfo Id="Email" Width="150" />
         <ColumnInfo Id="Photo" Width="100" />
         <ColumnInfo Id="Signature" Width="100" Caption="Signature Image" />
-        <ColumnInfo Id="branch" Width="100" Caption="Branch" />
-        <ColumnInfo Id="depart" Index="8" Width="120" MaxLength="50" Caption="Department" />
-        <ColumnInfo Id="chucdanh" Width="120" Index="9" Caption="Execute" />
+        <ColumnInfo Id="branch" Width="150" Caption="Branch" />
+        <ColumnInfo Id="depart" Index="8" Width="150" MaxLength="50" Caption="Department" />
+        <ColumnInfo Id="chucdanh" Width="150" Index="9" Caption="Execute" />
       </Columns>
     </ListView>
     <DetailView Id="DepartmentForm_DetailView">
@@ -462,16 +466,36 @@
         <ColumnInfo Id="RoleName" Caption="Execute Name" />
       </Columns>
     </ListView>
-    <ListView Id="Execute_Users_ListView">
+    <ListView Id="Execute_Users_ListView" NewItemRowPosition="Top">
       <Columns>
-        <ColumnInfo Id="chucdanh" Caption="Execute" />
-        <ColumnInfo Id="Name" Caption="Name" />
-        <ColumnInfo Id="EmployeeId" Caption="Employee ID" />
-        <ColumnInfo Id="PhoneNumber" Caption="Phone Number" />
-        <ColumnInfo Id="Gender" Caption="Gender" />
-        <ColumnInfo Id="Signature" Caption="Signature Image" />
-        <ColumnInfo Id="branch" Caption="Branch" />
-        <ColumnInfo Id="depart" Caption="Department" />
+        <ColumnInfo Id="chucdanh" Caption="Execute" Width="150" />
+        <ColumnInfo Id="Name" Caption="Name" Width="150" />
+        <ColumnInfo Id="EmployeeId" Caption="Employee ID" Width="150" />
+        <ColumnInfo Id="PhoneNumber" Caption="Phone Number" Width="150" />
+        <ColumnInfo Id="Gender" Caption="Gender" Width="100" />
+        <ColumnInfo Id="Email" Width="200" />
+        <ColumnInfo Id="Photo" Width="100" />
+        <ColumnInfo Id="Signature" Caption="Signature Image" Width="100" />
+        <ColumnInfo Id="branch" Caption="Branch" Width="150" />
+        <ColumnInfo Id="depart" Caption="Department" Width="150" />
+      </Columns>
+    </ListView>
+    <ListView Id="Notifications_proposalForms_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="Name" Width="150" Caption="Proposal Name" />
+        <ColumnInfo Id="Date" Width="150" Caption="Proposal Date" />
+        <ColumnInfo Id="user" Width="160" Caption="Creator" />
+        <ColumnInfo Id="HexCode" Width="100" />
+        <ColumnInfo Id="CS" Width="150" Caption="Branch" />
+        <ColumnInfo Id="Donvi" Width="150" Caption="Department" />
+        <ColumnInfo Id="Dagui" Width="80" Caption="Send" />
+        <ColumnInfo Id="Ngayduyet" Width="150" Caption="Approved Date" />
+        <ColumnInfo Id="NguoiXuly" Width="150" Caption="Process After Approval" />
+        <ColumnInfo Id="Daxong" Width="80" Caption="Done" />
+        <ColumnInfo Id="templateform" Width="150" Caption="Template Form" />
+        <ColumnInfo Id="State" Width="100" Caption="State" />
+        <ColumnInfo Id="Status" Width="100" Caption="Process" />
+        <ColumnInfo Id="Percentage" Width="130" />
       </Columns>
     </ListView>
     <DetailView Id="Phieumoi" Caption="Proposal Form">
@@ -571,19 +595,21 @@
     </ListView>
     <ListView Id="ProposalForm_ListView" Criteria="">
       <Columns>
-        <ColumnInfo Id="Content" Caption="Content" />
-        <ColumnInfo Id="Daxong" Caption="Done" Index="-1" />
-        <ColumnInfo Id="Name" Caption="Proposal Name" Width="126" />
-        <ColumnInfo Id="Date" Caption="Proposal Date" SortIndex="-1" SortOrder="None" Width="124" />
-        <ColumnInfo Id="user" Caption="Creator" Width="100" />
-        <ColumnInfo Id="CS" Caption="Branch" Width="100" />
-        <ColumnInfo Id="Donvi" Caption="Department" Width="104" />
+        <ColumnInfo Id="Content" Caption="Content" Width="150" />
+        <ColumnInfo Id="Daxong" Caption="Done" Index="-1" Width="80" />
+        <ColumnInfo Id="Name" Caption="Proposal Name" Width="150" />
+        <ColumnInfo Id="Date" Caption="Proposal Date" SortIndex="-1" SortOrder="None" Width="150" />
+        <ColumnInfo Id="user" Caption="Creator" Width="160" />
+        <ColumnInfo Id="HexCode" Width="100" />
+        <ColumnInfo Id="CS" Caption="Branch" Width="150" />
+        <ColumnInfo Id="Donvi" Caption="Department" Width="150" />
         <ColumnInfo Id="Dagui" Caption="Send" Width="80" />
-        <ColumnInfo Id="Ngayduyet" Caption="Approval Date" SortIndex="-1" SortOrder="None" Index="6" />
-        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Index="7" Width="200" />
-        <ColumnInfo Id="templateform" Caption="Template Form" Index="8" Width="200" SortIndex="0" SortOrder="Descending" />
-        <ColumnInfo Id="State" Caption="State" Index="9" Width="115" />
-        <ColumnInfo Id="Status" Caption="Process" Index="10" Width="120" />
+        <ColumnInfo Id="Ngayduyet" Caption="Approval Date" SortIndex="-1" SortOrder="None" Index="6" Width="150" />
+        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Index="7" Width="150" />
+        <ColumnInfo Id="templateform" Caption="Template Form" Index="8" Width="150" SortIndex="1" SortOrder="Descending" />
+        <ColumnInfo Id="State" Caption="State" Index="9" Width="100" />
+        <ColumnInfo Id="Status" Caption="Process" Index="10" Width="100" />
+        <ColumnInfo Id="Percentage" Width="130" />
       </Columns>
     </ListView>
     <ListView Id="ProposalForm_LookupListView">
@@ -629,9 +655,9 @@
     <ListView Id="TemplateForm_ApprovalProcesses_ListView" AllowLink="False" AllowUnlink="False">
       <Columns>
         <ColumnInfo Id="templateform" Caption="Template Form" />
-        <ColumnInfo Id="Step" Caption="Step" />
-        <ColumnInfo Id="DayLeft" Width="153" Caption="Number of Approval Days" />
-        <ColumnInfo Id="execute" Caption="Approver" />
+        <ColumnInfo Id="Step" Caption="Step" Width="200" />
+        <ColumnInfo Id="DayLeft" Width="300" Caption="Number of Approval Days" />
+        <ColumnInfo Id="execute" Caption="Approver" Width="560" />
       </Columns>
     </ListView>
     <ListView Id="TemplateForm_DepartmentForms_ListView">
@@ -675,19 +701,21 @@
     </ListView>
     <ListView Id="TemplateForm_ProposalForms_ListView">
       <Columns>
-        <ColumnInfo Id="Content" Caption="Content" />
-        <ColumnInfo Id="templateform" Caption="Template Form" />
-        <ColumnInfo Id="Name" Width="159" Caption="Proposal Name" SortIndex="0" SortOrder="Ascending" />
-        <ColumnInfo Id="Date" Width="113" Caption="Proposal Date" />
-        <ColumnInfo Id="user" Caption="Creator" />
-        <ColumnInfo Id="CS" Caption="Branch" />
-        <ColumnInfo Id="Donvi" Caption="Department" Width="100" />
-        <ColumnInfo Id="Dagui" Caption="Send" />
-        <ColumnInfo Id="Ngayduyet" Caption="Approval Date" Width="100" />
-        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Width="100" />
-        <ColumnInfo Id="Daxong" Caption="Done" />
+        <ColumnInfo Id="Content" Caption="Content" Width="150" />
+        <ColumnInfo Id="templateform" Caption="Template Form" Width="150" />
+        <ColumnInfo Id="Name" Width="150" Caption="Proposal Name" SortIndex="0" SortOrder="Ascending" />
+        <ColumnInfo Id="Date" Width="150" Caption="Proposal Date" />
+        <ColumnInfo Id="user" Caption="Creator" Width="160" />
+        <ColumnInfo Id="HexCode" Width="100" />
+        <ColumnInfo Id="CS" Caption="Branch" Width="150" />
+        <ColumnInfo Id="Donvi" Caption="Department" Width="150" />
+        <ColumnInfo Id="Dagui" Caption="Send" Width="80" />
+        <ColumnInfo Id="Ngayduyet" Caption="Approval Date" Width="150" />
+        <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Width="150" />
+        <ColumnInfo Id="Daxong" Caption="Done" Width="80" />
         <ColumnInfo Id="State" Width="100" Caption="State" SortIndex="-1" SortOrder="None" />
         <ColumnInfo Id="Status" Width="100" Caption="Process" />
+        <ColumnInfo Id="Percentage" Width="130" />
       </Columns>
     </ListView>
     <DashboardView Id="viewDX" Caption="Đề xuất" CustomizationFormEnabled="False" ImageName="dexuat" IsNewNode="True">
