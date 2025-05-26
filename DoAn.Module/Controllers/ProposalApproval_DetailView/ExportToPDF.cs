@@ -66,7 +66,8 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                 {
                     ApplicationUser ID = proposal.user;
                     ApplicationUser userInCurrentSpace = objectSpace.GetObjectByKey<ApplicationUser>(ID.Oid);
-                    if (userInCurrentSpace.chucdanh != null)
+                    
+                    if (userInCurrentSpace.chucdanh != null )
                     {
                         Execute executeInCurrentSpace = objectSpace.GetObjectByKey<Execute>(userInCurrentSpace.chucdanh.Oid);
                        
@@ -82,7 +83,15 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                     if (machuky != null)
                     {
                         ApplicationUser au = item.Users[0];
-                        
+                        Department department = proposalForm.Donvi;
+                        foreach (ApplicationUser user in item.Users)
+                        {
+                            if (user.depart == department)
+                            {
+                                au = user;
+                                break;
+                            }
+                        }
 
                         if (au != null)
                         {

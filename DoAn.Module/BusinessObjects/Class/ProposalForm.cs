@@ -325,12 +325,13 @@ namespace DoAn.Module.BusinessObjects.Class
         {
             get
             {
-                if (Status == 0)
+                if (Status == 0 || Status==-1)
                 {
                     return 0;
                 }
                 else
                 {
+                    
                     return (double)Status * 100 / templateform.ApprovalProcesses.Count;
                 }
             }
