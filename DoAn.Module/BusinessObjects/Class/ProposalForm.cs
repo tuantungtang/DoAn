@@ -65,7 +65,8 @@ namespace DoAn.Module.BusinessObjects.Class
                         Donvi = Session.GetObjectByKey<Department>(ns.depart.Oid);
 
                 }
-
+                Dagui = false;
+                Daxong = false;
             }
         }
 

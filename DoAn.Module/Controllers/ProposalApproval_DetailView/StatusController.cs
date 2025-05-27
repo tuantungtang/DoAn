@@ -43,10 +43,16 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                 ApplicationUser user = GetCurrentNhanvien();
                 int curStep = obj.Step;
                 int curStatus = obj.proposalform.Status;
-                if (curStep!=curStatus+1)
+                var state = obj.proposalform.Daxong;
+                if (curStep-curStatus!=1 || state==true)
                 {
                     View.AllowEdit["ReadOnly"] = false;
                 }
+                else
+                {
+                    View.AllowEdit["ReadOnly"] = true;
+                }
+                
 
                 //View.CurrentObjectChanged += SaveAction_ExecuteCompleted; 
             }
@@ -106,6 +112,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                 
             notification.proposalForms.Add(ObjectSpace.GetObjectByKey<ProposalForm>(proposalForm.Oid));
             string vbState;
+            string name = proposalForm.Name;
             if (proposalForm.State == Define.EStatusVB.daduyet)
             {
                 vbState = "approved";
@@ -115,7 +122,8 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
             {
                 vbState = "denied";
             }
-                notification.NotificationString = "Your proposal have been " + vbState;
+            proposalForm.Daxong = true;
+                notification.NotificationString = name+" have been " + vbState;
             ObjectSpace.CommitChanges();
         }
         //notificate for user a form that on their approve
@@ -134,7 +142,8 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                 }
             }
             Execute execute_role = user_add.chucdanh;
-            string text = "There is a form need your approval";
+            string name = proposalForm.Name;
+            string text = name+" need your approval";
             foreach (ApplicationUser applicationUser in execute_role.Users)
             {
                 Notifications notification2 = ObjectSpace.CreateObject<Notifications>();
@@ -184,7 +193,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
 
             ObjectSpace.CommitChanges();
             
-            Application.ShowViewStrategy.ShowMessage("Cập nhập thành công ", InformationType.Info);
+            Application.ShowViewStrategy.ShowMessage("Update success ", InformationType.Info);
         }
         
     }

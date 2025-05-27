@@ -141,6 +141,10 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                 string pdfName = proposalForm.HexCode.ToString() + "_" + proposalForm.user.Name + ".pdf";
                 string combined = Path.Combine(folderPath, pdfName);
 
+                //delete "..." in document
+                string dot = "…";
+                kyProcessor.Document.ReplaceAll(dot, "", SearchOptions.None);
+
                 using (FileStream pdfFileStream = new FileStream(combined, FileMode.Create))
                 {
                     kyProcessor.ExportToPdf(pdfFileStream, options);

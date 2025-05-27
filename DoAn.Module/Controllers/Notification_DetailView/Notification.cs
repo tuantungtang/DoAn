@@ -38,7 +38,7 @@ namespace DoAn.Module.Controllers.Notification
         [Association]
         public XPCollection<ProposalForm> proposalForms
         {
-            get { return GetCollection<ProposalForm>(nameof(proposalForms)); }
+            get { return GetCollection<ProposalForm>(nameof(proposalForms));}
         }
         private ApplicationUser _user;
         [Association]
