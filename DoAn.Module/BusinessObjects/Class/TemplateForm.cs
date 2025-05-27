@@ -120,7 +120,11 @@ namespace DoAn.Module.BusinessObjects.Class
         {
             get { return GetCollection<DepartmentForm>(nameof(DepartmentForms)); }
         }
-
+        [Association]
+        public XPCollection<Department> Departments
+        {
+            get { return GetCollection<Department>(nameof(Departments)); }
+        }
 
         [Association]
         public XPCollection<ApprovalProcess> ApprovalProcesses

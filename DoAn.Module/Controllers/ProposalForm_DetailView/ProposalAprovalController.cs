@@ -94,7 +94,8 @@ namespace DoAn.Module.Controllers.ProposalForm_DetailView
             {
                 notifications.user = user;
                 notifications.proposalForms.Add(proposal);
-                notifications.NotificationString = "There is a new form need your approval";
+                string form_name = proposal.Name;
+                notifications.NotificationString = form_name+" need your approval";
                 ObjectSpace.CommitChanges();
 
             }

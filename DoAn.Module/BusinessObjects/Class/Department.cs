@@ -71,5 +71,10 @@ namespace DoAn.Module.BusinessObjects.Class
         {
             get { return GetCollection<ApplicationUser>(nameof(Users)); }
         }
+        [Association]
+        public XPCollection<TemplateForm> templateForms
+        {
+            get { return GetCollection<TemplateForm>(nameof(templateForms)); }
+        }
     }
 }

@@ -2,6 +2,11 @@
 <Application Title="DoAn">
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
+    <Class Name="DoAn.Module.BusinessObjects.Class.ProposalForm">
+      <OwnMembers>
+        <Member Name="templateform" DataSourceCriteriaProperty="" />
+      </OwnMembers>
+    </Class>
   </BOModel>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
@@ -224,7 +229,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="ProposalApproval_ListView" Criteria="" AllowEdit="True" AllowNew="False" AllowDelete="False" Filter="[user.depart] = [proposalform.user.chucdanh]" FilterEnabled="False" />
+    <ListView Id="ProposalApproval_ListView" Criteria="" AllowEdit="True" AllowNew="False" AllowDelete="False" Filter="" FilterEnabled="False" />
     <DetailView Id="ProposalForm_DetailView" DefaultFocusedItem="Content">
       <Items>
         <PropertyEditor Id="HexCode" AllowEdit="False" />
@@ -284,7 +289,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="ProposalForm_ListView" AllowNew="False" Criteria="">
+    <ListView Id="ProposalForm_ListView" AllowNew="False" Criteria="" Filter="IsCurrentUserId([user.Oid])">
       <Columns>
         <ColumnInfo Id="NguoiXuly" Width="130" SortIndex="0" SortOrder="Ascending" Index="-1" />
         <ColumnInfo Id="Name" SortIndex="-1" SortOrder="None" Width="104" />
@@ -340,6 +345,11 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="TemplateForm_LookupListView">
+      <Filters>
+        <Filter Id="@53ad14e3-69d1-47d7-bf3b-424246f692a0" IsNewNode="True" />
+      </Filters>
+    </ListView>
     <ListView Id="TemplateForm_ProposalForms_ListView">
       <Columns>
         <ColumnInfo Id="Name" Width="96" SortIndex="-1" SortOrder="None" />

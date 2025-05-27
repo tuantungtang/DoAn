@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace DoAn.Module.Controllers.ProposalForm_ListView
 {
-    public class ConditionView : ViewController
+    public class ConditionView : ViewController<ListView>
     {
         public ConditionView()
         {
-            TargetViewId = "ProposalForm_ListView";
+            TargetViewId = "Notifications_ListView";
     
         }
         protected override void OnActivated()
