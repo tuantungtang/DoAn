@@ -16,8 +16,10 @@ namespace DoAn.Module.Controllers.TemplateForm_Listview
     {
         public Filter_Department()
         {
-            TargetViewId = "TemplateForm_ListView";
-
+            //TargetViewId = "TemplateForm_ListView";
+            //TargetViewId = "TemplateForm_LookupListView";
+            TargetObjectType = typeof(TemplateForm);
+            TargetViewType=ViewType.ListView;
         }
         protected override void OnActivated()
         {

@@ -229,7 +229,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="ProposalApproval_ListView" Criteria="" AllowEdit="True" AllowNew="False" AllowDelete="False" Filter="" FilterEnabled="False" />
+    <ListView Id="ProposalApproval_ListView" Criteria="" AllowEdit="True" AllowNew="False" AllowDelete="False" Filter="IsCurrentUserId([user.Oid])" FilterEnabled="False" />
     <DetailView Id="ProposalForm_DetailView" DefaultFocusedItem="Content">
       <Items>
         <PropertyEditor Id="HexCode" AllowEdit="False" />

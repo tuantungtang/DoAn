@@ -32,15 +32,10 @@ namespace DoAn.Module.Controllers.ProposalApproval_Listview
             if (View is ListView listView)
             {
                 ApplicationUser user = Define.GetCurrentNhanvien();
-                /*
-                 temporary fixed
-                 */
-                object obj = View.CurrentObject;
-                if (user.chucdanh is not null) { }
                 Execute execute = user.chucdanh;
                 Execute cur = ObjectSpace.GetObject<Execute>(execute);
                 Department cur_de = ObjectSpace.GetObjectByKey<Department>(user.depart.Oid);
-                //View.CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("user.Oid = ?", ObjectSpace.GetKeyValue(user));
+                View.CollectionSource.Criteria["Filter3"] = CriteriaOperator.Parse("user = ?", ObjectSpace.GetObjectByKey<ApplicationUser>(user.Oid));
 
                 View.CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("proposalform.Donvi = ?", cur_de);
                 View.CollectionSource.Criteria["Filter2"] = CriteriaOperator.Parse("proposalform.Dagui = ?", true);

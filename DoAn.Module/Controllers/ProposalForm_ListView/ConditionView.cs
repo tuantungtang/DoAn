@@ -18,7 +18,9 @@ namespace DoAn.Module.Controllers.ProposalForm_ListView
         public ConditionView()
         {
             TargetViewId = "Notifications_ListView";
-    
+
+
+
         }
         protected override void OnActivated()
         {
