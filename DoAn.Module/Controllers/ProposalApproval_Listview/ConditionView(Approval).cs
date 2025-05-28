@@ -19,7 +19,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_Listview
     {
         public ConditionView_Approval_()
         {
-            TargetViewId = "ProposalApproval_ListView";
+            TargetViewId = "ApplicationUser_ProposalApprovals_ListView";
         }
         protected override void OnActivated()
         {
