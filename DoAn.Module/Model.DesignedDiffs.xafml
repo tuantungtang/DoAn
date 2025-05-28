@@ -8,6 +8,15 @@
       </OwnMembers>
     </Class>
   </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="Category">
+        <Items>
+          <Item Id="ProposalApproval_ListView" ViewId="ApplicationUser_ProposalApprovals_ListView" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
