@@ -150,7 +150,7 @@ namespace DoAn.Module.BusinessObjects.Class
             set { SetPropertyValue<string>(nameof(Kyduyet), ref _Kyduyet, value); }
         }
         private Department _Donvi;
-        [XafDisplayName("Bộ Phận (*)"),ModelDefault("AllowEdit", "true")]
+        [XafDisplayName("Bộ Phận (*)"),ModelDefault("AllowEdit", "false")]
         //[RuleRequiredField(DefaultContexts.Save, CustomMessageTemplate = "'Bộ Phận' không được để trống!")]
         [Appearance("bp", Visibility = ViewItemVisibility.Hide, Criteria = "IsCoso", Context = "DetailView")]
         [Association]

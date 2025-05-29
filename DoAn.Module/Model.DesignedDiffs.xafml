@@ -185,7 +185,34 @@
       </Layout>
     </DetailView>
     <ListView Id="Execute_Users_ListView" AllowNew="False" AllowLink="False" AllowEdit="True" />
-    <ListView Id="Notifications_ListView" AllowNew="False" AllowUnlink="False" AllowEdit="False" />
+    <DetailView Id="Notifications_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="10.703363914373089">
+            <LayoutGroup Id="Notifications" RelativeSize="100">
+              <LayoutItem Id="NotificationString" RelativeSize="51.42857142857143" />
+              <LayoutItem Id="notiTime" Index="1" RelativeSize="48.57142857142857" />
+              <LayoutItem Id="user" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="proposalForms_Group" Direction="Vertical" RelativeSize="89.29663608562691">
+            <LayoutItem Id="proposalForms" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Notifications_ListView" AllowNew="False" AllowUnlink="False" AllowEdit="False">
+      <Columns>
+        <ColumnInfo Id="user" Index="-1" />
+        <ColumnInfo Id="notiTime" Index="1" />
+      </Columns>
+    </ListView>
+    <ListView Id="Notifications_proposalForms_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="user" SortIndex="0" SortOrder="Ascending" />
+      </Columns>
+    </ListView>
     <DetailView Id="Phieumoi" CaptionColon=":" EnableCaptionColon="True" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationFormEnabled="True" RequiredFieldMark="*" ClassName="DoAn.Module.BusinessObjects.Class.ProposalForm" DefaultFocusedItem="Content" Caption="Phiếu Đề Xuất" IsNewNode="True">
       <Items IsNewNode="True">
         <PropertyEditor Id="Content" PropertyName="Content" IsNewNode="True" />
