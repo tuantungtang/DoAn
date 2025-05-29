@@ -15,7 +15,7 @@
           <Item Id="Category_ListView" Index="1" />
           <Item Id="TemplateForm_ListView" Index="2" />
           <Item Id="Department_ListView" Index="3" />
-          <Item Id="DepartmentForm_ListView" Index="4" />
+          <Item Id="DepartmentForm_ListView" Index="4" Removed="True" />
           <Item Id="ProposalForm_ListView" Index="5" />
           <Item Id="ProposalApproval_ListView" Index="6" />
         </Items>
@@ -202,8 +202,9 @@
     <ListView Id="ApplicationUser_ProposalForms_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False">
       <Columns>
         <ColumnInfo Id="Content" Caption="Content" Width="150" />
+        <ColumnInfo Id="Daxong" Caption="Done" Width="80" SortIndex="0" SortOrder="Ascending" Index="-1" />
         <ColumnInfo Id="user" Caption="Creator" />
-        <ColumnInfo Id="Name" Caption="Proposal Name" Width="150" />
+        <ColumnInfo Id="Name" Caption="Proposal Name" Width="150" SortIndex="-1" SortOrder="None" />
         <ColumnInfo Id="Date" Caption="Proposal Date" Width="150" />
         <ColumnInfo Id="HexCode" Width="100" />
         <ColumnInfo Id="CS" Caption="Branch" Width="150" />
@@ -211,11 +212,10 @@
         <ColumnInfo Id="Dagui" Caption="Send" Width="80" />
         <ColumnInfo Id="Ngayduyet" Caption="Approval Date" Width="150" />
         <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Width="150" />
-        <ColumnInfo Id="Daxong" Caption="Done" Width="80" />
-        <ColumnInfo Id="templateform" Caption="Template Form" Width="150" />
-        <ColumnInfo Id="State" Caption="State" Width="100" />
-        <ColumnInfo Id="Status" Caption="Process" Width="100" />
-        <ColumnInfo Id="Percentage" Width="130" />
+        <ColumnInfo Id="templateform" Caption="Template Form" Width="150" Index="8" />
+        <ColumnInfo Id="State" Caption="State" Width="100" Index="9" />
+        <ColumnInfo Id="Status" Caption="Process" Width="100" Index="10" />
+        <ColumnInfo Id="Percentage" Width="130" Index="11" />
       </Columns>
     </ListView>
     <ListView Id="ApplicationUser_Proposals_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" Removed="True">
@@ -370,6 +370,13 @@
         <ColumnInfo Id="DepartmentName" Caption="Department Name" />
       </Columns>
     </ListView>
+    <ListView Id="Department_templateForms_ListView">
+      <Columns>
+        <ColumnInfo Id="Content" Caption="Content" />
+        <ColumnInfo Id="FormName" Caption="Template Name" />
+        <ColumnInfo Id="category" Caption="Category" />
+      </Columns>
+    </ListView>
     <ListView Id="Department_Users_ListView" ShowAutoFilterRow="False">
       <Columns>
         <ColumnInfo Id="Name" Width="150" MaxLength="100" MinWidth="100" SortOrder="Ascending" PropertyEditorType="DevExpress.ExpressApp.Blazor.Editors.StringPropertyEditor" Caption="Name" />
@@ -482,6 +489,7 @@
     </ListView>
     <ListView Id="Notifications_proposalForms_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False">
       <Columns>
+        <ColumnInfo Id="Daxong" Width="80" Caption="Done" Index="-1" />
         <ColumnInfo Id="Name" Width="150" Caption="Proposal Name" />
         <ColumnInfo Id="Date" Width="150" Caption="Proposal Date" />
         <ColumnInfo Id="user" Width="160" Caption="Creator" />
@@ -491,11 +499,10 @@
         <ColumnInfo Id="Dagui" Width="80" Caption="Send" />
         <ColumnInfo Id="Ngayduyet" Width="150" Caption="Approved Date" />
         <ColumnInfo Id="NguoiXuly" Width="150" Caption="Process After Approval" />
-        <ColumnInfo Id="Daxong" Width="80" Caption="Done" />
-        <ColumnInfo Id="templateform" Width="150" Caption="Template Form" />
-        <ColumnInfo Id="State" Width="100" Caption="State" />
-        <ColumnInfo Id="Status" Width="100" Caption="Process" />
-        <ColumnInfo Id="Percentage" Width="130" />
+        <ColumnInfo Id="templateform" Width="150" Caption="Template Form" Index="9" />
+        <ColumnInfo Id="State" Width="100" Caption="State" Index="10" />
+        <ColumnInfo Id="Status" Width="100" Caption="Process" Index="11" />
+        <ColumnInfo Id="Percentage" Width="130" Index="12" />
       </Columns>
     </ListView>
     <DetailView Id="Phieumoi" Caption="Proposal Form">
@@ -666,6 +673,12 @@
         <ColumnInfo Id="department" Width="1060" Caption="Department" />
       </Columns>
     </ListView>
+    <ListView Id="TemplateForm_Departments_ListView">
+      <Columns>
+        <ColumnInfo Id="DepartmentName" Caption="Department" />
+        <ColumnInfo Id="branch" Caption="Branch" />
+      </Columns>
+    </ListView>
     <DetailView Id="TemplateForm_DetailView">
       <Items>
         <PropertyEditor Id="ApprovalProcesses" ImmediatePostData="False" AllowEdit="True" AllowUnlink="False" AllowLink="False" />
@@ -702,6 +715,7 @@
     <ListView Id="TemplateForm_ProposalForms_ListView">
       <Columns>
         <ColumnInfo Id="Content" Caption="Content" Width="150" />
+        <ColumnInfo Id="Daxong" Caption="Done" Width="80" Index="-1" />
         <ColumnInfo Id="templateform" Caption="Template Form" Width="150" />
         <ColumnInfo Id="Name" Width="150" Caption="Proposal Name" SortIndex="0" SortOrder="Ascending" />
         <ColumnInfo Id="Date" Width="150" Caption="Proposal Date" />
@@ -712,10 +726,9 @@
         <ColumnInfo Id="Dagui" Caption="Send" Width="80" />
         <ColumnInfo Id="Ngayduyet" Caption="Approval Date" Width="150" />
         <ColumnInfo Id="NguoiXuly" Caption="Processing After Review" Width="150" />
-        <ColumnInfo Id="Daxong" Caption="Done" Width="80" />
-        <ColumnInfo Id="State" Width="100" Caption="State" SortIndex="-1" SortOrder="None" />
-        <ColumnInfo Id="Status" Width="100" Caption="Process" />
-        <ColumnInfo Id="Percentage" Width="130" />
+        <ColumnInfo Id="State" Width="100" Caption="State" SortIndex="-1" SortOrder="None" Index="9" />
+        <ColumnInfo Id="Status" Width="100" Caption="Process" Index="10" />
+        <ColumnInfo Id="Percentage" Width="130" Index="11" />
       </Columns>
     </ListView>
     <DashboardView Id="viewDX" Caption="Đề xuất" CustomizationFormEnabled="False" ImageName="dexuat" IsNewNode="True">

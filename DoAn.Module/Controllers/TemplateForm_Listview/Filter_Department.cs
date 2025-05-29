@@ -34,7 +34,7 @@ namespace DoAn.Module.Controllers.TemplateForm_Listview
 
                 ApplicationUser nv = Define.GetCurrentNhanvien();
                 Department nv_de = ObjectSpace.GetObjectByKey<Department>(nv.depart.Oid);
-                var collectionSource = (CollectionSource)View.CollectionSource;
+                var collectionSource = View.CollectionSource;
                 collectionSource.Criteria["DepartmentFilter"] = new ContainsOperator("Departments", new InOperator("Oid", nv_de.Oid));
             }
         }
