@@ -34,7 +34,7 @@ namespace DoAn.Module.Controllers.ProposalForm_DetailView
                 Caption = "Send",
                 ImageName = "gui",
                 TargetViewId = "ProposalForm_DetailView",
-                ToolTip = "Gửi hoặc hủy Đề Xuất"
+                ToolTip = "Send? "
             };
             GuiDX.Execute += GuiDX_Execute;
 
@@ -85,11 +85,14 @@ namespace DoAn.Module.Controllers.ProposalForm_DetailView
             Execute execute = applicationUser.chucdanh;
             foreach(ApplicationUser user in execute.Users)
             {
-                notifications.user = user;
-                notifications.proposalForms.Add(proposal);
-                string form_name = proposal.Name;
-                notifications.NotificationString = form_name+" need your approval";
-                ObjectSpace.CommitChanges();
+                if(user.depart==proposal.Donvi)
+                {
+                    notifications.user = user;
+                    notifications.proposalForms.Add(proposal);
+                    string form_name = proposal.Name;
+                    notifications.NotificationString = form_name + " need your approval";
+                    ObjectSpace.CommitChanges();
+                }
 
             }
             
@@ -155,7 +158,7 @@ namespace DoAn.Module.Controllers.ProposalForm_DetailView
                         {
                             if (CurPhieu.Dagui) { 
                                 GuiDX.Caption = "Cancel";
-                                sendNoti();
+   
                                 }
                             else
                                 GuiDX.Caption = "Send";

@@ -91,14 +91,14 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                     proposalApproval.State = EStatusDuyet.huy;
                 }
             }
-            
-            Session session = proposalForm.Session;
-            CreateNotification(objectSpace, proposalForm, session);
+
+            CreateNotification(objectSpace, proposalForm);
+            View.AllowEdit["ReadOnly"] = false;
             objectSpace.CommitChanges();
         }
 
         //add notifications for cancel/approved forms
-        private void CreateNotification(IObjectSpace objectSpace,ProposalForm proposalForm,Session session)
+        private void CreateNotification(IObjectSpace objectSpace,ProposalForm proposalForm)
         {
             Notifications notification = ObjectSpace.CreateObject<Notifications>();
             foreach (Sharing share in proposalForm.Sharings)
@@ -128,7 +128,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
             ObjectSpace.CommitChanges();
         }
         //notificate for user a form that on their approve
-        private void NotificationUser(IObjectSpace objectSpace,ProposalForm proposalForm,ProposalApproval proposalApproval,Session session)
+        private void NotificationUser(IObjectSpace objectSpace,ProposalForm proposalForm,ProposalApproval proposalApproval)
         {
             int step_now = proposalApproval.Step;
             
@@ -168,10 +168,9 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
 
                 }
             }
-            Session session = proposalForm.Session;
+            NotificationUser(objectSpace, proposalForm, currentApproval);
 
 
-            
 
             proposalForm.Status += 1;
             
@@ -179,12 +178,12 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
             {
                 proposalForm.State = EStatusVB.daduyet;
                 proposalForm.Ngayduyet = System.DateTime.Now;
-                NotificationUser(objectSpace, proposalForm, currentApproval, session);
+                
             }
             
             if (proposalForm.Status == proposalForm.ProposalApprovals.Count || proposalForm.State == EStatusVB.dahuy)
             {
-                CreateNotification(objectSpace, proposalForm, session);
+                CreateNotification(objectSpace, proposalForm);
             }
 
             ObjectSpace.CommitChanges();
