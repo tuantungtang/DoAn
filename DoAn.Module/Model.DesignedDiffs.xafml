@@ -86,6 +86,7 @@
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
     <ListView Id="ApplicationUser_Notifies_ListView" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False" />
     <ListView Id="ApplicationUser_ProposalApprovals_ListView" Filter="[Step] = [proposalform.Status] + 1 Or [State] = ##Enum#DoAn.Module.BusinessObjects.Class.Define+EStatusDuyet,huy# Or [State] = ##Enum#DoAn.Module.BusinessObjects.Class.Define+EStatusDuyet,daduyet#" Criteria="IsCurrentUserId([user.Oid])" />
+    <ListView Id="ApplicationUser_Proposals_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" />
     <ListView Id="ApplicationUser_Sharings_ListView">
       <Columns>
         <ColumnInfo Id="proposalform" SortIndex="0" SortOrder="Ascending" />
@@ -214,7 +215,7 @@
         <ColumnInfo Id="notiTime" Index="1" />
       </Columns>
     </ListView>
-    <ListView Id="Notifications_proposalForms_ListView">
+    <ListView Id="Notifications_proposalForms_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False">
       <Columns>
         <ColumnInfo Id="Name" SortIndex="-1" SortOrder="None" />
         <ColumnInfo Id="user" SortIndex="0" SortOrder="Ascending" />
