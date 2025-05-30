@@ -171,7 +171,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
             Session session = proposalForm.Session;
 
 
-            NotificationUser(objectSpace, proposalForm, currentApproval, session);
+            
 
             proposalForm.Status += 1;
             
@@ -179,9 +179,9 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
             {
                 proposalForm.State = EStatusVB.daduyet;
                 proposalForm.Ngayduyet = System.DateTime.Now;
+                NotificationUser(objectSpace, proposalForm, currentApproval, session);
             }
             
-
             if (proposalForm.Status == proposalForm.ProposalApprovals.Count || proposalForm.State == EStatusVB.dahuy)
             {
                 CreateNotification(objectSpace, proposalForm, session);

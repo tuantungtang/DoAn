@@ -85,7 +85,7 @@
     </DetailView>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
     <ListView Id="ApplicationUser_Notifies_ListView" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False" />
-    <ListView Id="ApplicationUser_ProposalApprovals_ListView" Filter="[Step] = [proposalform.Status] + 1 Or [State] = ##Enum#DoAn.Module.BusinessObjects.Class.Define+EStatusDuyet,huy# Or [State] = ##Enum#DoAn.Module.BusinessObjects.Class.Define+EStatusDuyet,daduyet#" Criteria="IsCurrentUserId([user.Oid])" />
+    <ListView Id="ApplicationUser_ProposalApprovals_ListView" Filter="[Step] = [proposalform.Status] + 1 Or [State] = ##Enum#DoAn.Module.BusinessObjects.Class.Define+EStatusDuyet,daduyet#" Criteria="" />
     <ListView Id="ApplicationUser_Proposals_ListView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" />
     <ListView Id="ApplicationUser_Sharings_ListView">
       <Columns>
