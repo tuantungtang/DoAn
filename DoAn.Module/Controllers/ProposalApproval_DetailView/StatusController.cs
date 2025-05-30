@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp;
+﻿
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Notifications;
 using DevExpress.ExpressApp.SystemModule;
@@ -168,15 +169,10 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                 }
             }
             Session session = proposalForm.Session;
-            //ApplicationUser temp= Define.GetCurrentNhanvien();
-
-            //proposalForm.approved.Add(temp.Oid.ToString());
-            //this.ObjectSpace.CommitChanges();
-
-                NotificationUser(objectSpace, proposalForm, currentApproval, session);
 
 
-            
+            NotificationUser(objectSpace, proposalForm, currentApproval, session);
+
             proposalForm.Status += 1;
             
             if (proposalForm.Status == proposalForm.ProposalApprovals.Count)
@@ -194,6 +190,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
             ObjectSpace.CommitChanges();
             
             Application.ShowViewStrategy.ShowMessage("Update success ", InformationType.Info);
+            View.AllowEdit["ReadOnly"] = false;
         }
         
     }

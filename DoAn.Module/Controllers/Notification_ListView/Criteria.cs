@@ -1,4 +1,5 @@
-﻿using DevExpress.Data.Filtering;
+﻿//filter for Notifications_ListView
+using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.XtraSpreadsheet.Commands;
 using DoAn.Module.BusinessObjects.Authentication;

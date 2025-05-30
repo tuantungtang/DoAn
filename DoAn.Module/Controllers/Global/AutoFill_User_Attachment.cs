@@ -1,4 +1,4 @@
-﻿///if form have been approve or decline, make only
+﻿// set user create attachment be current user
 using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;

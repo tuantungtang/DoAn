@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp;
+﻿//export proposal form to pdf with signature and content
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Xpo;
 using DevExpress.XtraPrinting;
@@ -28,23 +29,23 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                 IObjectSpace objectSpace = app.CreateObjectSpace(typeof(ProposalForm));
 
 
-                // Tạo tài liệu ký duyệt
+                // create document 
                 RichEditDocumentServer kyProcessor = new()
                 {
                     RtfText = proposalForm.Kyduyet
                 };
 
-                // Tạo tài liệu nội dung
+                // add content
                 using RichEditDocumentServer wordProcessor = new();
                 wordProcessor.RtfText = proposalForm.Content;
 
-                // Chèn nội dung vào đầu tài liệu ký duyệt
+   
                 DocumentPosition pos = kyProcessor.Document.CreatePosition(0);
                 kyProcessor.Document.InsertRtfText(pos, wordProcessor.RtfText);
 
 
 
-                // Thêm ảnh chữ ký chính
+                // add signature
                 if (proposalForm.user.Signature != null)
                 {
                     using var ms = new MemoryStream(proposalForm.user.Signature);
@@ -59,7 +60,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                     }
                 }
 
-                // Xử lý chữ ký theo từng chức danh
+                // add signature by execute and department
                 Session session = proposalForm.Session;
                 List<Execute> chucdanhs = new List<Execute>();
                 foreach (ProposalApproval proposal in proposalForm.ProposalApprovals)
@@ -122,7 +123,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                     }
                 }
 
-                // Tùy chọn xuất PDF
+                // export to pdf options
                 PdfExportOptions options = new()
                 {
                     DocumentOptions = { Author = proposalForm.user.Name },
@@ -150,7 +151,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                     kyProcessor.ExportToPdf(pdfFileStream, options);
                 }
 
-                // Lưu các file đính kèm nếu có
+                // dowload attachments
                 foreach (var attachment in proposalForm.Files)
                 {
                     if (attachment.File != null)

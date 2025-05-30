@@ -1,4 +1,5 @@
-﻿using System;
+﻿//hash oid to 6 digits (can be duplicate)
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

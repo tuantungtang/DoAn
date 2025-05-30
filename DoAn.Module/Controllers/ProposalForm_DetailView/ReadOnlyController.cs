@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp;
+﻿//lock decline form in detail view
+using DevExpress.ExpressApp;
 using DoAn.Module.BusinessObjects.Class;
 using System;
 using System.Collections.Generic;

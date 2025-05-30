@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp;
+﻿//add expired date to each propsal approval based on the template form's approval processes
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
 using DevExpress.ExpressApp.SystemModule;
 using DevExpress.XtraRichEdit.Fields;

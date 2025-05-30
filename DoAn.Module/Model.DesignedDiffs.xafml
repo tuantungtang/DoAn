@@ -12,6 +12,7 @@
     <Items>
       <Item Id="Category">
         <Items>
+          <Item Id="DepartmentForm_ListView" Visible="True" />
           <Item Id="ProposalApproval_ListView" ViewId="ApplicationUser_ProposalApprovals_ListView" />
         </Items>
       </Item>
@@ -84,7 +85,7 @@
     </DetailView>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
     <ListView Id="ApplicationUser_Notifies_ListView" AllowEdit="False" AllowLink="False" AllowNew="False" AllowUnlink="False" />
-    <ListView Id="ApplicationUser_ProposalApprovals_ListView" Filter="" Criteria="IsCurrentUserId([user.Oid])" />
+    <ListView Id="ApplicationUser_ProposalApprovals_ListView" Filter="[Step] = [proposalform.Status] + 1 Or [State] = ##Enum#DoAn.Module.BusinessObjects.Class.Define+EStatusDuyet,huy# Or [State] = ##Enum#DoAn.Module.BusinessObjects.Class.Define+EStatusDuyet,daduyet#" Criteria="IsCurrentUserId([user.Oid])" />
     <ListView Id="ApplicationUser_Sharings_ListView">
       <Columns>
         <ColumnInfo Id="proposalform" SortIndex="0" SortOrder="Ascending" />
@@ -157,14 +158,20 @@
     <DetailView Id="Department_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="7.575757575757576">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="16.836734693877553">
             <LayoutGroup Id="Department" RelativeSize="100">
-              <LayoutItem Id="DepartmentName" RelativeSize="51.42857142857143" />
-              <LayoutItem Id="branch" RelativeSize="48.57142857142857" />
+              <LayoutItem Id="DepartmentName" RelativeSize="51.515151515151516" />
+              <LayoutItem Id="branch" RelativeSize="48.484848484848484" />
             </LayoutGroup>
           </LayoutGroup>
-          <TabbedGroup Id="Tabs" RelativeSize="92.42424242424242">
-            <LayoutGroup Id="DepartmentForms" Caption="Department Form" RelativeSize="100">
+          <TabbedGroup Id="Tabs" RelativeSize="83.16326530612245">
+            <LayoutGroup Id="Users" Index="0" RelativeSize="100">
+              <LayoutItem Id="Users" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="templateForms" Index="1" RelativeSize="100">
+              <LayoutItem Id="templateForms" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="DepartmentForms" Caption="Department Form" RelativeSize="100" Removed="True">
               <LayoutItem Id="DepartmentForms" RelativeSize="100" />
             </LayoutGroup>
           </TabbedGroup>
@@ -267,6 +274,7 @@
       </Layout>
     </DetailView>
     <ListView Id="ProposalApproval_ListView" Criteria="" AllowEdit="True" AllowNew="False" AllowDelete="False" Filter="IsCurrentUserId([user.Oid])" FilterEnabled="False" />
+    <ListView Id="ProposalApproval_LookupListView" Criteria="" />
     <DetailView Id="ProposalForm_DetailView" DefaultFocusedItem="Content">
       <Items>
         <PropertyEditor Id="HexCode" AllowEdit="False" />
@@ -358,22 +366,25 @@
     <DetailView Id="TemplateForm_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="8.930987821380244">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="14.285714285714286">
             <LayoutGroup Id="TemplateForm" RelativeSize="100" Direction="Vertical" Caption="Mẫu Đơn">
-              <LayoutItem Id="FormName" ViewItem="FormName" Index="0" RelativeSize="51.515151515151516" IsNewNode="True" Removed="True" />
-              <LayoutItem Id="category" RelativeSize="48.484848484848484" />
+              <LayoutItem Id="FormName" ViewItem="FormName" Index="0" RelativeSize="51.42857142857143" IsNewNode="True" Removed="True" />
+              <LayoutItem Id="category" RelativeSize="48.57142857142857" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutItem Id="Content" ViewItem="Content" Index="1" RelativeSize="9.742895805142084" IsNewNode="True" />
-          <TabbedGroup Id="Tabs" RelativeSize="81.32611637347767" Index="2">
+          <LayoutItem Id="Content" ViewItem="Content" Index="1" RelativeSize="18.979591836734695" IsNewNode="True" />
+          <TabbedGroup Id="Tabs" RelativeSize="66.73469387755102" Index="2">
             <LayoutGroup Id="ProposalForms" Caption="Đề Xuất" RelativeSize="100">
               <LayoutItem Id="ProposalForms" RelativeSize="100" />
             </LayoutGroup>
-            <LayoutGroup Id="DepartmentForms" RelativeSize="100" Caption="Bộ Phận Sử Dụng">
-              <LayoutItem Id="DepartmentForms" RelativeSize="100" />
+            <LayoutGroup Id="Departments" Index="1" RelativeSize="100">
+              <LayoutItem Id="Departments" RelativeSize="100" />
             </LayoutGroup>
-            <LayoutGroup Id="ApprovalProcesses" RelativeSize="100" Caption="Quy Trình Phê Duyệt">
+            <LayoutGroup Id="ApprovalProcesses" RelativeSize="100" Caption="Quy Trình Phê Duyệt" Index="2">
               <LayoutItem Id="ApprovalProcesses" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="DepartmentForms" RelativeSize="100" Caption="Bộ Phận Sử Dụng" Removed="True">
+              <LayoutItem Id="DepartmentForms" RelativeSize="100" />
             </LayoutGroup>
           </TabbedGroup>
           <LayoutGroup Id="SizeableEditors" RelativeSize="28.95805142083897" Caption="Nội Dung" Removed="True">

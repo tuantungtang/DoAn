@@ -1,4 +1,5 @@
-﻿using DevExpress.Data.Filtering;
+﻿//send button
+using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
 using DevExpress.ExpressApp.Xpo;
@@ -36,15 +37,7 @@ namespace DoAn.Module.Controllers.ProposalForm_DetailView
                 ToolTip = "Gửi hoặc hủy Đề Xuất"
             };
             GuiDX.Execute += GuiDX_Execute;
-            //DuyetDX = new(this, "DuyetDX", "View")
-            //{
-            //    Caption = "Duyệt",
-            //    ImageName = "duyet",
-            //    ToolTip = "Duyệt đề xuất",
-            //    TargetViewId = "ProposalForm_DetailView",
-            //};
-            //DuyetDX.Execute += DuyetDX_Execute;
-            //DuyetDX.Active["IsVisible"] = false;
+
         }
 
         private void GuiDX_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -118,28 +111,7 @@ namespace DoAn.Module.Controllers.ProposalForm_DetailView
                 GuiDX.Caption = "Send";
         }
 
-        //private void UpdateDuyetDXVisibility()
-        //{ 
-        //  DuyetDX.Active["IsVisible"] = curNV.chucdanh != null ;
-        //}
-        //private void DuyetDX_Execute(object sender, SimpleActionExecuteEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (curNV != null && CurrentBuocDuyet != null)
-        //        {
-        //            IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(ProposalApproval));
-        //            DetailView dView = Application.CreateDetailView(objectSpace, "ProposalApproval_DetailView", true, objectSpace.GetObject(CurrentBuocDuyet));
-        //            e.ShowViewParameters.CreatedView = dView;
-        //            e.ShowViewParameters.Context = TemplateContext.View;
-        //            e.ShowViewParameters.TargetWindow = TargetWindow.Default;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Define.CustomError(ex.Message);
-        //    }
-        //}
+
 
         protected override void OnActivated()
         {
@@ -192,36 +164,7 @@ namespace DoAn.Module.Controllers.ProposalForm_DetailView
                         else
                             GuiDX.Active.SetItemValue("an", false);
 
-                        //Duyet
-                        //Session session = ((XPObjectSpace)ObjectSpace).Session;
-                        //string sql = @"SELECT TOP (100) PERCENT State, user, OID
-                        //FROM     dbo.ProposalApproval WHERE   (proposalform = " + CurPhieu.Oid + ") ORDER BY Step";
-                        //SelectedData results2 = session.ExecuteQuery(sql);
-                        //foreach (SelectStatementResultRow row in results2.ResultSet[0].Rows)
-                        //{
-                        //    int trangthai = CommonLib.CInt(row.Values[0]);
-                        //    string nvId = CommonLib.CString(row.Values[1]);
-                        //    int duyetId = CommonLib.CInt(row.Values[2]);
-                        //    if (nvId == "CommonLib.CString(curNV.Oid)")
-                        //    {
-                        //        CurrentBuocDuyet = ObjectSpace.FindObject<ProposalApproval>(CriteriaOperator.Parse("Oid=?", duyetId));
-                        //    if (CurrentBuocDuyet != null)
-                        //    {
-                        //        DcDuyet = true;
-                        //        int sott = CurrentBuocDuyet.Step + 1;
-                        //        ProposalApproval duyetsau = ObjectSpace.FindObject<ProposalApproval>(CriteriaOperator.Parse("Step=? && proposalform=?", sott, CurPhieu));
-                        //        if (duyetsau != null)//neu duyet sau <> cho thi khong dc duyet nua
-                        //        {
-                        //            if (duyetsau.State != Define.EStatusDuyet.choduyet)
-                        //            {
-                        //                DcDuyet = false;
-                        //            }
-                        //        }
-                        //        break;
-                        //    }
-                        //    }
-                        //}
-                        //DuyetDX.Active.SetItemValue("an", DcDuyet);
+
                     }
                 }
             }

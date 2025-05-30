@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp;
+﻿//if form is expired, lock it
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.SystemModule;
 using DevExpress.ExpressApp.Utils;

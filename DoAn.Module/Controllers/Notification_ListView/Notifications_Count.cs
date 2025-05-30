@@ -1,4 +1,5 @@
-﻿using DevExpress.CodeParser;
+﻿// count number of notifications in the navigation item
+using DevExpress.CodeParser;
 using DevExpress.Data.Filtering;
 using DevExpress.Entity.Model.Metadata;
 using DevExpress.ExpressApp;

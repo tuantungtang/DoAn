@@ -1,4 +1,6 @@
-﻿using DevExpress.Data.Filtering;
+﻿
+
+using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.XtraRichEdit.Model;
 using DevExpress.XtraSpreadsheet.Commands;
@@ -30,8 +32,6 @@ namespace DoAn.Module.Controllers.TemplateForm_Listview
         {
             if (View is ListView listView)
             {
-                
-
                 ApplicationUser nv = Define.GetCurrentNhanvien();
                 Department nv_de = ObjectSpace.GetObjectByKey<Department>(nv.depart.Oid);
                 var collectionSource = View.CollectionSource;

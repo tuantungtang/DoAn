@@ -39,9 +39,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_Listview
 
                 View.CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("proposalform.Donvi = ?", cur_de);
                 View.CollectionSource.Criteria["Filter2"] = CriteriaOperator.Parse("proposalform.Dagui = ?", true);
-                //View.CollectionSource.Criteria["Filter2"] = CriteriaOperator.Parse("");
-                //CriteriaOperator criteria1 = CriteriaOperator.Parse("user.chucdanh = ?", cur.Oid);
-                //CriteriaOperator criteria2 = CriteriaOperator.Parse("user.chucdanh = ?", cur.Oid);
+
 
             }
 
