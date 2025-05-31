@@ -242,7 +242,7 @@ namespace DoAn.Module.Controllers.ProposalApproval_DetailView
                 ApplicationUser executeuser = objectSpace.GetObjectByKey<ApplicationUser>(proposalForm.user.Oid);
                 foreach (ApplicationUser applicationUser in form_department.Users)
                 {
-                    if (applicationUser.chucdanh.ToString() == "EXECUTOR")
+                    if (applicationUser.chucdanh.RoleNumber == "EXC")
                     {
 
                         Notifications notification = objectSpace.CreateObject<Notifications>();
